@@ -1,3 +1,0 @@
-add_subdirectory(deviceQuery)
-add_subdirectory(deviceQueryDrv)
-add_subdirectory(topologyQuery)
