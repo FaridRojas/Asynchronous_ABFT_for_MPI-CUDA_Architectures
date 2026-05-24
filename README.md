@@ -241,6 +241,3 @@ reference belongs to its original authors.
 If you use this code, please cite the accompanying paper. A BibTeX
 entry will be added here once the proceedings are published.
 
-## License
-
-See `LICENSE` (to be added at release time).
