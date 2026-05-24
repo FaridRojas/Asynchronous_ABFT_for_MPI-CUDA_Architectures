@@ -8,29 +8,9 @@
 #include "../metrics/metrics.cuh"
 #include "buffers.cuh"
 
-// ===================================================================
 // Pass functions
-//
-//   pass_baseline   — F cuBLAS calls only. Reference for overhead.
-//   pass_calibrate  — F cuBLAS calls + ABFT row checksums (no detection),
-//                     records every |actualRow - expectedRow| sample.
-//   pass_online_loop— pipelined online ABFT: verification concurrent with
-//                     cuBLAS via two streams, AND localization of iter k
-//                     overlaps with cuBLAS of iter k+1 via double-buffered
-//                     dC.  Pending corrections are processed after the loop.
-// ===================================================================
 
-// ---------------------------------------------------------------------------
 // pass_baseline — one timing TRIAL of `repeats` unprotected GEMM iters.
-//
-// Returns the total wall-clock time (ms) of the whole trial, measured between
-// `MPI_Barrier` and the final `cudaStreamSynchronize`.  The caller divides by
-// `repeats` to get the mean per-iter time.
-//
-// IMPORTANT: this matches `pass_online_loop`'s timing scope (whole-loop wall
-// clock).  Earlier per-iter timing was apples-to-oranges vs. the online path,
-// which inflated baseline numbers and made the protected path look free.
-// ---------------------------------------------------------------------------
 inline double pass_baseline(PipelineBuffers& b,
                             const float* dA, int lda,
                             const float* dB, int ldb,
@@ -54,9 +34,7 @@ inline double pass_baseline(PipelineBuffers& b,
     return std::chrono::duration<double, std::milli>(t1 - t0).count();
 }
 
-// ---------------------------------------------------------------------------
 // pass_calibrate — clean GEMM + checksums, no detection.
-// ---------------------------------------------------------------------------
 inline double pass_calibrate(PipelineBuffers& b,
                              const float* dA, int lda,
                              const float* dB, int ldb,
@@ -80,9 +58,6 @@ inline double pass_calibrate(PipelineBuffers& b,
     CUDA_CHECK(cudaStreamSynchronize(b.verify_stream));
 
     // Calibration is OFFLINE (not the timed perf path), so the host
-    // round-trip here is harmless; use local host temporaries since the
-    // pinned per-fragment staging was removed with the device-resident
-    // online refactor.
     std::vector<double> hExp(b.N_frag_max), hAct(b.N_frag_max);
     for (int f = 0; f < b.F; ++f) {
         int N_frag = b.col_counts[f];
@@ -110,29 +85,7 @@ inline double pass_calibrate(PipelineBuffers& b,
     return std::chrono::duration<double, std::milli>(t1 - t0).count();
 }
 
-// ===================================================================
 // Pipelined online ABFT loop — FULLY DEVICE-RESIDENT
-// -------------------------------------------------------------------
-// Detection, localisation and correction are now GPU kernels.  Inside
-// the timed loop there is ZERO host round-trip: no per-iteration DtoH
-// of checksum vectors, no cudaEventSynchronize, no host compare.  The
-// verify stream runs entirely concurrently with the compute stream;
-// the host only reads four CM counters + n_restored ONCE after the loop.
-//
-//   - colSumA + expectedRow_f (A,B only) are precomputed ONCE pre-loop.
-//   - Per iter, per fragment, on verify_stream (gated by compute_done):
-//       actualRow_f  ->  k_detect_row  (writes dErrCol[f]/dRowDiff[f],
-//                                        folds TP/TN/FP/FN into dCM)
-//     When injection is enabled, the localise+correct chain
-//     (rowSumB, expectedCol, actualCol, locate+correct) is also queued;
-//     every one of those kernels is DEVICE-GATED by dErrCol[f] so it is
-//     a launch-latency no-op on the (overwhelming) clean path.
-//   - Two dC buffers alternated by parity; iter k+2 waits on
-//     buf_verify_done[k%2] before overwriting that buffer.
-//   - The whole detect chain evaluates EVERY fragment every iter (the
-//     old host path broke after the first detection, skipping the rest);
-//     this makes the confusion matrix strictly more complete.
-// ===================================================================
 
 inline void pass_online_loop(PipelineBuffers& b,
                              const float* dA, int lda,
@@ -151,12 +104,9 @@ inline void pass_online_loop(PipelineBuffers& b,
                              double& out_total_ms) {
     float* dC_bufs[2] = { dC_buf0, dC_buf1 };
     // "swifi" = real bit-flip (accuracy);  "add" = large additive fault
-    // that always trips the threshold (overhead studies).  Both exercise
-    // the full detect+localize+correct path.
     const bool inject_on  = (inject_mode == "swifi" || inject_mode == "add");
     const bool do_localize = inject_on;
 
-    // --- Optional device golden (only for the restore-success metric) ---
     if (do_localize && !C_golden.empty() && b.dGolden == nullptr) {
         CUDA_CHECK(cudaMalloc(&b.dGolden,
                               sizeof(float) * (size_t)M_b * (size_t)N_b));
@@ -165,7 +115,6 @@ inline void pass_online_loop(PipelineBuffers& b,
                               cudaMemcpyHostToDevice));
     }
 
-    // --- Pre-loop: colSumA + all expectedRow_f (A,B only), no DtoH ---
     launch_col_checksum_A(dA, lda, b.dColSumA, M_b, K, b.verify_stream);
     for (int f = 0; f < b.F; ++f) {
         int N_frag = b.col_counts[f];
@@ -178,7 +127,6 @@ inline void pass_online_loop(PipelineBuffers& b,
     CUDA_CHECK(cudaMemsetAsync(b.dNRestored, 0, sizeof(int), b.verify_stream));
     CUDA_CHECK(cudaStreamSynchronize(b.verify_stream));
 
-    // --- Buffer-reuse synchronisation events: one per dC buffer ---
     cudaEvent_t buf_verify_done[2];
     bool buf_event_used[2] = { false, false };
     for (int i = 0; i < 2; ++i)
@@ -188,7 +136,6 @@ inline void pass_online_loop(PipelineBuffers& b,
     MPI_CHECK(MPI_Barrier(MPI_COMM_WORLD));
     auto loop_t0 = clk::now();
 
-    // ============================ MAIN LOOP ===========================
     for (int it = 0; it < repeats; ++it) {
         int buf_idx = it % 2;
         float* dC   = dC_bufs[buf_idx];
@@ -198,7 +145,6 @@ inline void pass_online_loop(PipelineBuffers& b,
                                            buf_verify_done[buf_idx], 0));
         }
 
-        // ---- Per-iter SWIFI configuration (host picks WHICH frag only) ----
         int      inject_frag = -1;
         uint64_t inject_seed = base_seed
                              + (uint64_t)world_rank * 7919ull
@@ -209,7 +155,6 @@ inline void pass_online_loop(PipelineBuffers& b,
             inject_frag = d(rng);
         }
 
-        // ---- SGEMMs into dC_bufs[buf_idx] ----
         for (int f = 0; f < b.F; ++f) {
             int N_frag = b.col_counts[f];
             int off    = b.col_offsets[f];
@@ -227,7 +172,6 @@ inline void pass_online_loop(PipelineBuffers& b,
             CUDA_CHECK(cudaEventRecord(b.compute_done[f], b.compute_stream));
         }
 
-        // ---- Device-resident verify+localize+correct on verify_stream ----
         for (int f = 0; f < b.F; ++f) {
             int N_frag = b.col_counts[f];
             int off    = b.col_offsets[f];
@@ -243,7 +187,6 @@ inline void pass_online_loop(PipelineBuffers& b,
                               injected, b.dCM, b.verify_stream);
             if (do_localize) {
                 // Every kernel below early-returns on the device when
-                // dErrCol[f] < 0 (clean) — launch latency only.
                 launch_localize_correct(dA, lda, dB + off, ldb,
                                         dC + off, ldc,
                                         b.dRowSumB, b.dExpectedCol,
@@ -259,7 +202,6 @@ inline void pass_online_loop(PipelineBuffers& b,
         buf_event_used[buf_idx] = true;
     }
 
-    // ============================ POST-LOOP ===========================
     CUDA_CHECK(cudaStreamSynchronize(b.compute_stream));
     CUDA_CHECK(cudaStreamSynchronize(b.verify_stream));
 
@@ -278,7 +220,6 @@ inline void pass_online_loop(PipelineBuffers& b,
     n_restored += hNR;
 
     // out_iter_ms is diagnostic only (per-iter timing was a host sync we
-    // removed); report the loop mean so the field stays meaningful.
     out_iter_ms.assign(repeats,
                        repeats > 0 ? out_total_ms / repeats : 0.0);
 

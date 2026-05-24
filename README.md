@@ -18,8 +18,7 @@ The binary exposes two execution modes used throughout this release:
 | Mode                            | What runs                                                                                                                                                                                                       |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `--baseline`                    | Unprotected cuBLAS GEMM. Reference for the overhead measurement.                                                                                                                                                |
-| `--inject {none\|add}`          | Online ABFT with pre-computed `expectedRow` and per-fragment `actualRow + compare` on the verify stream, double-buffered `dC`, async localisation, post-loop correction drain. `none` runs detection only; `add` forces the correction path on every iteration. |
-
+| `--inject {none\|add}`          | Online ABFT with pre-computed `expectedRow` and per-fragment `actualRow + compare` on the verify stream, double-buffered `dC`, async localisation, post-loop correction drain. `none` runs detection only; `add` forces the correction path on every iteration
 The head-to-head comparison against the fused-kernel reference of Wu
 et al., 2023 is not a separate binary mode; it is orchestrated by
 [scripts/example_comparison.sh](scripts/example_comparison.sh), which

@@ -18,9 +18,7 @@
 #include <cstdint>
 #include <chrono>
 
-// ---------------------------------------------------------------------------
 // Error-checking macros
-// ---------------------------------------------------------------------------
 #define CUDA_CHECK(call) do {                                       \
     cudaError_t err = (call);                                       \
     if (err != cudaSuccess) {                                       \
@@ -53,9 +51,7 @@
 
 using clk = std::chrono::high_resolution_clock;
 
-// ---------------------------------------------------------------------------
 // Math utilities
-// ---------------------------------------------------------------------------
 
 /// Fill a vector with pseudo-random values in [-1, 1]
 inline void fill_random(std::vector<float>& M, uint64_t seed) {
@@ -77,10 +73,7 @@ inline double matrix_inf_norm(const float* M, int rows, int cols, int ld) {
     return max_row_sum;
 }
 
-/// Stepwise-checksum theoretical detection threshold (worst-case rounding bound):
-///   tau = gamma_k * ||A||_inf * ||B||_inf,  gamma_k = k * eps / (1 - k * eps)
-/// In practice this can be much larger than the natural noise floor;
-/// run `--calibrate` to obtain an empirically tuned threshold.
+// / Stepwise-checksum theoretical detection threshold (worst-case rounding bound):
 inline double compute_threshold_formula(int k, double norm_A_inf, double norm_B_inf) {
     const double eps = static_cast<double>(FLT_EPSILON);
     double denom = 1.0 - static_cast<double>(k) * eps;
@@ -89,13 +82,11 @@ inline double compute_threshold_formula(int k, double norm_A_inf, double norm_B_
     return gamma_k * norm_A_inf * norm_B_inf;
 }
 
-// ---------------------------------------------------------------------------
 // Statistics over timing samples
-// ---------------------------------------------------------------------------
 struct TimingStats {
     double min_ms    = 0.0;
     double median_ms = 0.0;
-    double mean_ms   = 0.0;   // arithmetic mean (apples-to-apples with theirs)
+    double mean_ms   = 0.0;   // arithmetic mean (just like theirs) 
     double max_ms    = 0.0;
     int    n_samples = 0;
 };

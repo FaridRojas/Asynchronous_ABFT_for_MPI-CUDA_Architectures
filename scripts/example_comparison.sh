@@ -1,55 +1,5 @@
 #!/usr/bin/env bash
-# =====================================================================
 # example_comparison.sh
-#
-# Portable reproducibility recipe for the head-to-head comparison
-# against the fused-kernel ABFT reference of Wu et al., 2023:
-#
-#     Fault-Tolerant-SGEMM-on-NVIDIA-GPUs
-#     https://github.com/shixun404/Fault-Tolerant-SGEMM-on-NVIDIA-GPUs.git
-#
-# For every shape (M, K, N) in the requested regimes the script emits
-# six rows into compare_all.csv:
-#
-#     ours_baseline       our cuBLAS, unprotected
-#     ours_online         our online ABFT, no fault
-#     ours_online_inj     our online ABFT with an always-on additive fault
-#     theirs_cublas       their cuBLAS reference
-#     theirs_fused        their fused-kernel ABFT, no fault
-#     theirs_fused_inj    their fused-kernel ABFT with a fault
-#
-# Output: compare_all.csv (long format). No plots are produced.
-#
-# Requirements (in addition to the abft_gemm prerequisites):
-#   - git, cmake (to build the reference project)
-#   - the cuda-samples Common headers (auto-fetched if missing)
-#
-# Usage:
-#   bash scripts/example_comparison.sh
-#
-# Overridable knobs (environment variables):
-#   REGIMES          space-separated subset of  small_sq big_sq small_ns big_ns
-#                    default: "small_sq big_sq small_ns big_ns"
-#   SMALL_N          shapes per small regime           (default 4;   paper: 20)
-#   BIG_N            shapes per big   regime           (default 6;   paper: 40)
-#   BIG_STEP         stride for the big regime sweep   (default 1024; paper: 256)
-#   SMALL_K_NS       fixed K for small non-square      (default 256)
-#   BIG_K_NS         fixed K for big   non-square      (default 1024)
-#   OUR_SAMPLES      back-to-back timed GEMMs of ours  (default 10;  paper: 15)
-#   THEIRS_SAMPLES   re-invocations of theirs/shape    (default 2;   paper: 3)
-#   WARMUPS          discarded warm-up samples         (default 5)
-#   F                fragments per rank (ours)         (default 8)
-#   CUDA_ARCH        compute capability for the ref    (default 52)
-#   THEIRS_DIR       reference project directory       (default Fault-Tolerant-SGEMM-on-NVIDIA-GPUs)
-#   THEIRS_URL       reference project clone URL       (default upstream above)
-#   OUT_CSV          output CSV path                   (default compare_all.csv)
-#
-# Quick smoke run (one regime, three shapes):
-#   REGIMES=small_sq SMALL_N=3 bash scripts/example_comparison.sh
-# Reproduce paper-scale sweep (slow):
-#   SMALL_N=20 BIG_N=40 BIG_STEP=256 OUR_SAMPLES=15 THEIRS_SAMPLES=3 \
-#       bash scripts/example_comparison.sh
-# =====================================================================
 
 set -euo pipefail
 
@@ -59,9 +9,7 @@ cd "${REPO_ROOT}"
 
 declare -gA _THEIRS_DUMPED=()
 
-# --------------------------------------------------------------------
 # Tool checks
-# --------------------------------------------------------------------
 for tool in nvcc mpicc mpirun git cmake make python3; do
   command -v "${tool}" >/dev/null 2>&1 || { echo "ERROR: ${tool} not in PATH"; exit 1; }
 done
@@ -69,9 +17,7 @@ done
 MPICC_PATH="$(command -v mpicc)"
 MPI_PREFIX="$(dirname "$(dirname "${MPICC_PATH}")")"
 
-# --------------------------------------------------------------------
 # Knobs
-# --------------------------------------------------------------------
 REGIMES="${REGIMES:-small_sq big_sq small_ns big_ns}"
 SMALL_N=${SMALL_N:-4}
 BIG_N=${BIG_N:-6}
@@ -91,8 +37,6 @@ OUR_THRESHOLD="1.0"   # perf-only comparison; detection accuracy irrelevant
 OUR_R=1               # one timed GEMM per sample (back-to-back)
 
 # Shape grids.
-# small_grid: SMALL_N points uniformly spaced in (0, 1024], rounded to 16.
-# big_grid:   BIG_N points stepped by BIG_STEP starting at BIG_STEP.
 small_grid() {
   local i s
   for ((i=0; i<SMALL_N; i++)); do
@@ -112,9 +56,7 @@ mapfile -t BIG_SQ   < <(big_grid   | awk '!s[$0]++ {print $1, $1, $1}')
 mapfile -t SMALL_NS < <(small_grid | awk -v K=${SMALL_K_NS} '!s[$0]++ {print $1, K, $1}')
 mapfile -t BIG_NS   < <(big_grid   | awk -v K=${BIG_K_NS}   '!s[$0]++ {print $1, K, $1}')
 
-# --------------------------------------------------------------------
 # 1. Provision the reference project
-# --------------------------------------------------------------------
 if [[ ! -d "${THEIRS_DIR}" ]]; then
   echo "=== Cloning ${THEIRS_URL} into ${THEIRS_DIR}/ ==="
   git clone --depth 1 "${THEIRS_URL}" "${THEIRS_DIR}"
@@ -155,8 +97,6 @@ if ! grep -q "FT_M override" "${SGEMM_SRC}"; then
 fi
 
 # Inject a warm-up window in their timing harness so both sides start at
-# boosted clocks.  gflops still divides by num_tests (the timed-iter
-# count), so the formula is unchanged.
 if ! grep -q "FT_WARMUP" "${SGEMM_SRC}"; then
   echo "=== Patching ${SGEMM_SRC} for warm-up (FT_WARMUP) ==="
   sed -i 's@#define multi 20@#define multi 20\n#define FT_WARMUP 5  /* discarded warm-up iters before timed num_tests */@' \
@@ -168,9 +108,6 @@ if ! grep -q "FT_WARMUP" "${SGEMM_SRC}"; then
 fi
 
 # Their fault injection is hard-coded as a compile-time constant in every
-# ft_sgemm_*.cuh, so we build twice: once with error_inject=0.0 (clean)
-# and once with error_inject=10000.0 (always-on additive fault), the
-# analogue of OURS --inject add.
 FT_HDRS=( "${THEIRS_DIR}"/kernel/ft_sgemm/include_code_gen/ft_sgemm_*.cuh )
 [[ -e "${FT_HDRS[0]}" ]] \
     || { echo "ERROR: no ft_sgemm_*.cuh headers in ${THEIRS_DIR}"; exit 1; }
@@ -198,18 +135,14 @@ build_theirs inj
 THEIRS_CLEAN="${THEIRS_DIR}/ft_sgemm_clean"
 THEIRS_INJ="${THEIRS_DIR}/ft_sgemm_inj"
 
-# --------------------------------------------------------------------
 # 2. Build our project
-# --------------------------------------------------------------------
 echo "=== Building our abft_gemm ==="
 nvcc -O3 -std=c++17 -ccbin g++ \
   -I"${MPI_PREFIX}/include" \
   main.cu -o abft_gemm \
   -L"${MPI_PREFIX}/lib" -lmpi -lcublas
 
-# --------------------------------------------------------------------
 # 3. Helpers
-# --------------------------------------------------------------------
 echo "regime,M,K,N,who,gflops,time_ms" > "${OUT_CSV}"
 
 their_gflops() {  # $1=logfile  $2=row-name (cublas|abft_kernel_huge|...)
@@ -235,16 +168,13 @@ print(row["baseline_gflops_mean"], row["baseline_mean_ms"],
 PY
 }
 
-# --------------------------------------------------------------------
 # 4. Per-shape comparison
-# --------------------------------------------------------------------
 run_shape() {  # $1=regime  $2=M $3=K $4=N
   local regime="$1" M="$2" K="$3" N="$4"
   local smax=$(( M>N ? (M>K?M:K) : (N>K?N:K) ))
   echo
   echo "### ${regime}  M=${M} K=${K} N=${N}  samples=${OUR_SAMPLES}  warmups=${WARMUPS}"
 
-  # ----- ours, no fault (also yields the cuBLAS baseline row) -----
   rm -f abft_metrics_cmp.csv _ours_launch.log
   if ! mpirun -np 1 ./abft_gemm ${M} ${K} ${N} \
        --inject none --threshold ${OUR_THRESHOLD} --grid 1 1 \
@@ -264,7 +194,6 @@ run_shape() {  # $1=regime  $2=M $3=K $4=N
   echo "${regime},${M},${K},${N},ours_baseline,${ob_g},${ob_t}" >> "${OUT_CSV}"
   echo "${regime},${M},${K},${N},ours_online,${op_g},${op_t}"   >> "${OUT_CSV}"
 
-  # ----- ours, with fault -----
   rm -f abft_metrics_inj.csv
   if mpirun -np 1 ./abft_gemm ${M} ${K} ${N} \
        --inject add --threshold ${OUR_THRESHOLD} --grid 1 1 \
@@ -278,7 +207,6 @@ run_shape() {  # $1=regime  $2=M $3=K $4=N
     fi
   fi
 
-  # ----- theirs: shape-appropriate kernel dispatch -----
   # (dispatch tracks the reference's kernel_number mapping, sgemm.cu L240)
   local kidx kname
   local out_max=$(( M>N ? M : N ))
@@ -326,9 +254,7 @@ run_shape() {  # $1=regime  $2=M $3=K $4=N
   fi
 }
 
-# --------------------------------------------------------------------
 # 5. Sweep
-# --------------------------------------------------------------------
 for reg in ${REGIMES}; do
   case "${reg}" in
     small_sq) for s in "${SMALL_SQ[@]}"; do run_shape small_sq $s; done ;;

@@ -3,9 +3,7 @@
 #include "common.cuh"
 #include "types.cuh"
 
-// ---------------------------------------------------------------------------
 // Help text
-// ---------------------------------------------------------------------------
 inline void print_help() {
     std::cout <<
 "Usage:\n"
@@ -48,9 +46,7 @@ inline void print_help() {
 "  --help                         this message\n";
 }
 
-// ---------------------------------------------------------------------------
 // CLI parser
-// ---------------------------------------------------------------------------
 inline ExperimentConfig parse_args(int argc, char** argv) {
     ExperimentConfig c{};
     std::vector<int> positional;

@@ -3,15 +3,7 @@
 #include "../core/common.cuh"
 #include "../distribution/grid.cuh"
 
-// ===================================================================
 // Per-rank pipeline buffers — pre-allocated once for the full run.
-//
-// Detection / localisation / correction are now fully DEVICE-RESIDENT
-// (see abft_stepwise.cuh).  The verify stream runs concurrently with the
-// compute stream and never round-trips to the host inside the loop; the
-// localisation scratch is single-instance (the verify stream is in-order,
-// so fragment k's locate+correct completes before fragment k+1 starts).
-// ===================================================================
 struct PipelineBuffers {
     int F;
     int N_frag_max;
@@ -30,7 +22,6 @@ struct PipelineBuffers {
     double* dRowDiff  = nullptr;   // [F]
 
     // Device localisation scratch (single instance — verify stream is
-    // serialised so this is reused across frags/iters safely)
     double* dRowSumB     = nullptr;   // [K]
     double* dExpectedCol = nullptr;   // [M_b]
     double* dActualCol   = nullptr;   // [M_b]

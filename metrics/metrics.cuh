@@ -3,10 +3,7 @@
 #include "../core/common.cuh"
 #include "../core/types.cuh"
 
-// ===================================================================
 // Metrics Module — confusion matrix, derived metrics, MPI aggregation,
-// human-readable printout, and CSV logging.
-// ===================================================================
 
 struct ConfusionMatrix {
     int TP = 0;   // injected AND detected
@@ -23,9 +20,6 @@ struct ExperimentMetrics {
     double      overhead_pct = 0.0;
 
     // GFLOPS throughput (whole-problem 2*M*N*K, worst-rank time).
-    // Same formula as Fault-Tolerant-SGEMM-on-NVIDIA-GPUs/.../sgemm.cu:431-435.
-    // For a given time t (ms):  GFLOPS/s = (2*M*N*K) / (t * 1e6).
-    // Note: min_ms maps to MAX GFLOPS (fastest sample); max_ms maps to MIN GFLOPS.
     double baseline_gflops_med = 0.0;
     double baseline_gflops_min = 0.0;
     double baseline_gflops_max = 0.0;
@@ -60,9 +54,7 @@ struct ExperimentMetrics {
     double calib_suggested_tau  = 0.0;
 };
 
-// ---------------------------------------------------------------------------
 // Confusion-matrix bookkeeping
-// ---------------------------------------------------------------------------
 inline void update_confusion_matrix(ConfusionMatrix& cm,
                                     bool fault_injected,
                                     bool fault_detected) {
@@ -109,9 +101,7 @@ inline TimingStats mpi_reduce_timing_max(const TimingStats& local, MPI_Comm comm
     return r;
 }
 
-// ---------------------------------------------------------------------------
 // Derived metrics
-// ---------------------------------------------------------------------------
 inline double compute_recall(const ConfusionMatrix& cm) {
     int d = cm.TP + cm.FN;
     return (d > 0) ? static_cast<double>(cm.TP) / d : 0.0;
@@ -133,8 +123,6 @@ inline double compute_runtime_overhead(double t_protected_ms, double t_baseline_
 }
 
 // GFLOPS/s for a GEMM of size M×N×K given the per-iter wall time (ms).
-// Mirrors the reference project's formula: 2·M·N·K FLOPs per GEMM, divided
-// by elapsed seconds.
 inline double compute_gflops(double time_ms, int M, int N, int K) {
     if (time_ms <= 0.0) return 0.0;
     double flops = 2.0 * (double)M * (double)N * (double)K;
@@ -160,9 +148,7 @@ inline void finalize_metrics(ExperimentMetrics& m) {
     m.protected_gflops_mean = compute_gflops(m.protected_.mean_ms,  m.M, m.N, m.K);
 }
 
-// ---------------------------------------------------------------------------
 // Pretty-print (rank 0 only — caller's responsibility)
-// ---------------------------------------------------------------------------
 inline void print_metrics(const ExperimentMetrics& m) {
     std::cout << std::fixed << std::setprecision(4);
     std::cout << "\n========== EXPERIMENT METRICS (global) ==========\n";
@@ -224,9 +210,7 @@ inline void print_metrics(const ExperimentMetrics& m) {
     std::cout << "==================================================\n\n";
 }
 
-// ---------------------------------------------------------------------------
 // CSV logging — one row per experiment (only rank 0 should call)
-// ---------------------------------------------------------------------------
 inline void log_metrics_csv(const ExperimentMetrics& m, const std::string& filename) {
     bool write_header = false;
     {
