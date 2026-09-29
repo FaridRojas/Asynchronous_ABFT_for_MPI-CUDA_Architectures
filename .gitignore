@@ -21,3 +21,6 @@ scripts/*.err
 /_calib_*.csv
 /abft_*.csv
 /compare_all.csv
+
+# Python bytecode caches
+__pycache__/
