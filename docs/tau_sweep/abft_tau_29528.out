@@ -1,0 +1,3179 @@
+=== Compiling ===
+############################################
+###  TAU SWEEP  4 sizes x 4 factors x 6 modes
+############################################
+  max|a-e|(1024) = 0.0002673333333
+  max|a-e|(2048) = 0.0007706666667
+  max|a-e|(4096) = 0.007213666667
+  max|a-e|(8192) = 0.019747
+### 1024^3  factor=1  tau=0.0002673333333
+============================================
+=== FP  1024^3 c=1 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0003
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3823 / 0.3995 / 0.4396  ms
+Baseline   GFLOPS (med): 5376.0070  (min 4885.1301, max 5617.1118)
+Protected  min/med/max : 1.1513 / 1.1919 / 1.2534  ms
+Protected  GFLOPS (med): 1801.6694  (min 1713.3731, max 1865.2264)
+Overhead (median)      : 198.3903 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1582 / 18 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=1 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0003
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3841 / 0.4008 / 0.4875  ms
+Baseline   GFLOPS (med): 5357.8327  (min 4404.7332, max 5591.3424)
+Protected  min/med/max : 1.6799 / 1.9413 / 2.5193  ms
+Protected  GFLOPS (med): 1106.2239  (min 852.4287, max 1278.3257)
+Overhead (median)      : 384.3353 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 134 / 1388 / 12 / 66
+Recall                : 0.6700
+Detection precision   : 0.9178
+Correction precision  : 93.2836 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=1 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0003
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3854 / 0.4021 / 0.5555  ms
+Baseline   GFLOPS (med): 5340.8831  (min 3865.6901, max 5572.5097)
+Protected  min/med/max : 1.7243 / 1.9748 / 2.5394  ms
+Protected  GFLOPS (med): 1087.4172  (min 845.6654, max 1245.3909)
+Overhead (median)      : 391.1531 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1388 / 12 / 0
+Recall                : 1.0000
+Detection precision   : 0.9434
+Correction precision  : 99.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=1 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0003
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3883 / 0.4000 / 0.5777  ms
+Baseline   GFLOPS (med): 5368.7628  (min 3717.1124, max 5530.4613)
+Protected  min/med/max : 1.7459 / 1.9722 / 2.5331  ms
+Protected  GFLOPS (med): 1088.8838  (min 847.7603, max 1230.0258)
+Overhead (median)      : 393.0519 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1388 / 12 / 2
+Recall                : 0.9900
+Detection precision   : 0.9429
+Correction precision  : 90.9091 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=1 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0003
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3871 / 0.4008 / 0.4572  ms
+Baseline   GFLOPS (med): 5358.0466  (min 4697.4546, max 5548.0642)
+Protected  min/med/max : 1.6902 / 1.9622 / 2.4895  ms
+Protected  GFLOPS (med): 1094.4349  (min 862.6223, max 1270.5372)
+Overhead (median)      : 389.5720 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1388 / 12 / 1
+Recall                : 0.9950
+Detection precision   : 0.9431
+Correction precision  : 98.4925 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=1 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0003
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3885 / 0.4013 / 0.4548  ms
+Baseline   GFLOPS (med): 5350.7973  (min 4721.3008, max 5527.7565)
+Protected  min/med/max : 1.6554 / 1.7721 / 2.2964  ms
+Protected  GFLOPS (med): 1211.8346  (min 935.1368, max 1297.2894)
+Overhead (median)      : 341.5452 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 49 / 1388 / 12 / 151
+Recall                : 0.2450
+Detection precision   : 0.8033
+Correction precision  : 77.5510 %
+==================================================
+
+
+### 1024^3  factor=2  tau=0.0005346666666
+============================================
+=== FP  1024^3 c=2 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000534667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0005
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3822 / 0.4000 / 0.4724  ms
+Baseline   GFLOPS (med): 5368.0515  (min 4546.2379, max 5618.5374)
+Protected  min/med/max : 1.1546 / 1.1943 / 1.2367  ms
+Protected  GFLOPS (med): 1798.1770  (min 1736.4573, max 1859.9712)
+Overhead (median)      : 198.5274 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=2 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000534667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0005
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3917 / 0.4018 / 0.6693  ms
+Baseline   GFLOPS (med): 5344.7247  (min 3208.4846, max 5483.0303)
+Protected  min/med/max : 1.6513 / 1.9391 / 2.0797  ms
+Protected  GFLOPS (med): 1107.4618  (min 1032.6173, max 1300.4987)
+Overhead (median)      : 382.6103 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 126 / 1400 / 0 / 74
+Recall                : 0.6300
+Detection precision   : 1.0000
+Correction precision  : 96.0317 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=2 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000534667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0005
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3857 / 0.4022 / 0.4547  ms
+Baseline   GFLOPS (med): 5339.2233  (min 4722.5155, max 5567.1791)
+Protected  min/med/max : 1.6772 / 1.9432 / 2.2020  ms
+Protected  GFLOPS (med): 1105.1411  (min 975.2348, max 1280.3660)
+Overhead (median)      : 383.1259 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=2 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000534667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0005
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3857 / 0.4015 / 0.4966  ms
+Baseline   GFLOPS (med): 5348.0523  (min 4324.1031, max 5567.2656)
+Protected  min/med/max : 1.6658 / 1.9664 / 2.0720  ms
+Protected  GFLOPS (med): 1092.1006  (min 1036.4468, max 1289.1907)
+Overhead (median)      : 389.7033 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1400 / 0 / 2
+Recall                : 0.9900
+Detection precision   : 1.0000
+Correction precision  : 92.4242 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=2 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000534667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0005
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3876 / 0.4027 / 0.4876  ms
+Baseline   GFLOPS (med): 5332.6074  (min 4404.4442, max 5540.3491)
+Protected  min/med/max : 1.6357 / 1.9462 / 2.7730  ms
+Protected  GFLOPS (med): 1103.4069  (min 774.4219, max 1312.8675)
+Overhead (median)      : 383.2857 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 196 / 1400 / 0 / 4
+Recall                : 0.9800
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=2 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000534667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0005
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3844 / 0.4009 / 0.5767  ms
+Baseline   GFLOPS (med): 5356.7769  (min 3723.6738, max 5586.9784)
+Protected  min/med/max : 1.5258 / 1.7334 / 2.0529  ms
+Protected  GFLOPS (med): 1238.8509  (min 1046.0757, max 1407.4062)
+Overhead (median)      : 332.3988 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 22 / 1400 / 0 / 178
+Recall                : 0.1100
+Detection precision   : 1.0000
+Correction precision  : 95.4545 %
+==================================================
+
+
+### 1024^3  factor=3  tau=0.0008019999999
+============================================
+=== FP  1024^3 c=3 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000802 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3810 / 0.3992 / 0.4509  ms
+Baseline   GFLOPS (med): 5379.2390  (min 4762.5021, max 5637.0022)
+Protected  min/med/max : 1.1517 / 1.1909 / 1.2583  ms
+Protected  GFLOPS (med): 1803.2140  (min 1706.7198, max 1864.6369)
+Overhead (median)      : 198.3139 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=3 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000802 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3893 / 0.4024 / 0.4578  ms
+Baseline   GFLOPS (med): 5337.0338  (min 4691.2565, max 5515.5609)
+Protected  min/med/max : 1.6432 / 1.9289 / 2.1157  ms
+Protected  GFLOPS (med): 1113.3342  (min 1015.0055, max 1306.8872)
+Overhead (median)      : 379.3739 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 126 / 1400 / 0 / 74
+Recall                : 0.6300
+Detection precision   : 1.0000
+Correction precision  : 96.0317 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=3 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000802 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3872 / 0.4016 / 0.4490  ms
+Baseline   GFLOPS (med): 5347.1734  (min 4782.4416, max 5545.5140)
+Protected  min/med/max : 1.6735 / 1.9567 / 2.0632  ms
+Protected  GFLOPS (med): 1097.5095  (min 1040.8383, max 1283.2382)
+Overhead (median)      : 387.2098 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=3 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000802 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3938 / 0.4023 / 0.4580  ms
+Baseline   GFLOPS (med): 5337.3654  (min 4688.7266, max 5453.4143)
+Protected  min/med/max : 1.7393 / 1.9577 / 2.2341  ms
+Protected  GFLOPS (med): 1096.9522  (min 961.2432, max 1234.7047)
+Overhead (median)      : 386.5632 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1400 / 0 / 2
+Recall                : 0.9900
+Detection precision   : 1.0000
+Correction precision  : 92.4242 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=3 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000802 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3888 / 0.4029 / 0.4700  ms
+Baseline   GFLOPS (med): 5329.5899  (min 4568.7253, max 5522.8377)
+Protected  min/med/max : 1.6440 / 1.9471 / 2.1512  ms
+Protected  GFLOPS (med): 1102.9224  (min 998.2947, max 1306.2425)
+Overhead (median)      : 383.2244 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 196 / 1400 / 0 / 4
+Recall                : 0.9800
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=3 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000802 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3906 / 0.4014 / 0.4582  ms
+Baseline   GFLOPS (med): 5349.9175  (min 4686.6800, max 5497.2485)
+Protected  min/med/max : 1.4060 / 1.7214 / 2.0249  ms
+Protected  GFLOPS (med): 1247.4984  (min 1060.5308, max 1527.3297)
+Overhead (median)      : 328.8517 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 21 / 1400 / 0 / 179
+Recall                : 0.1050
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+### 1024^3  factor=10  tau=0.002673333333
+============================================
+=== FP  1024^3 c=10 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0027
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3831 / 0.3991 / 0.4543  ms
+Baseline   GFLOPS (med): 5380.5463  (min 4726.7565, max 5605.3677)
+Protected  min/med/max : 1.1556 / 1.1849 / 1.2197  ms
+Protected  GFLOPS (med): 1812.3586  (min 1760.6120, max 1858.3230)
+Overhead (median)      : 196.8809 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=10 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0027
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3883 / 0.4024 / 0.6812  ms
+Baseline   GFLOPS (med): 5336.9410  (min 3152.6814, max 5530.9171)
+Protected  min/med/max : 1.6669 / 1.9197 / 2.0630  ms
+Protected  GFLOPS (med): 1118.6821  (min 1040.9291, max 1288.2890)
+Overhead (median)      : 377.0740 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 110 / 1400 / 0 / 90
+Recall                : 0.5500
+Detection precision   : 1.0000
+Correction precision  : 95.4545 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=10 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0027
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3929 / 0.4046 / 0.4651  ms
+Baseline   GFLOPS (med): 5307.3299  (min 4617.2912, max 5465.4475)
+Protected  min/med/max : 1.6619 / 1.9518 / 2.0861  ms
+Protected  GFLOPS (med): 1100.2361  (min 1029.4113, max 1292.2154)
+Overhead (median)      : 382.3810 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=10 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0027
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3802 / 0.4029 / 0.4599  ms
+Baseline   GFLOPS (med): 5330.0000  (min 4669.8335, max 5648.5377)
+Protected  min/med/max : 1.6787 / 1.9672 / 2.0924  ms
+Protected  GFLOPS (med): 1091.6709  (min 1026.3202, max 1279.2220)
+Overhead (median)      : 388.2424 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1400 / 0 / 2
+Recall                : 0.9900
+Detection precision   : 1.0000
+Correction precision  : 92.4242 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=10 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0027
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3896 / 0.4028 / 0.4696  ms
+Baseline   GFLOPS (med): 5331.4159  (min 4573.4930, max 5511.9792)
+Protected  min/med/max : 1.6785 / 1.9548 / 2.1721  ms
+Protected  GFLOPS (med): 1098.5414  (min 988.6729, max 1279.4133)
+Overhead (median)      : 385.3177 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 187 / 1400 / 0 / 13
+Recall                : 0.9350
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 1024^3 c=10 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 1024 x 1024 x 1024
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00267333 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 1024 x 1024 x 1024
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0027
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.3886 / 0.4028 / 0.4994  ms
+Baseline   GFLOPS (med): 5331.6276  (min 4300.0069, max 5525.6941)
+Protected  min/med/max : 1.6611 / 1.7202 / 2.0404  ms
+Protected  GFLOPS (med): 1248.4267  (min 1052.4982, max 1292.8455)
+Overhead (median)      : 327.0677 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 8 / 1400 / 0 / 192
+Recall                : 0.0400
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+### 2048^3  factor=1  tau=0.0007706666667
+============================================
+=== FP  2048^3 c=1 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4269 / 2.4469 / 2.5109  ms
+Baseline   GFLOPS (med): 7021.2016  (min 6842.0615, max 7079.0437)
+Protected  min/med/max : 3.4975 / 3.6592 / 3.9844  ms
+Protected  GFLOPS (med): 4694.9231  (min 4311.7378, max 4912.0806)
+Overhead (median)      : 49.5488 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1575 / 25 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=1 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4067 / 2.4455 / 2.5073  ms
+Baseline   GFLOPS (med): 7025.2010  (min 6851.9318, max 7138.3895)
+Protected  min/med/max : 3.9502 / 4.7586 / 6.1326  ms
+Protected  GFLOPS (med): 3610.2530  (min 2801.3974, max 4349.0983)
+Overhead (median)      : 94.5903 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 128 / 1378 / 22 / 72
+Recall                : 0.6400
+Detection precision   : 0.8533
+Correction precision  : 96.0938 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=1 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4156 / 2.4485 / 3.2028  ms
+Baseline   GFLOPS (med): 7016.5590  (min 5363.9436, max 7112.0652)
+Protected  min/med/max : 4.3812 / 5.0121 / 6.1315  ms
+Protected  GFLOPS (med): 3427.6925  (min 2801.8977, max 3921.3007)
+Overhead (median)      : 104.7021 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1378 / 22 / 0
+Recall                : 1.0000
+Detection precision   : 0.9009
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=1 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4179 / 2.4503 / 2.5853  ms
+Baseline   GFLOPS (med): 7011.2185  (min 6645.1025, max 7105.3646)
+Protected  min/med/max : 4.4913 / 4.9739 / 5.9447  ms
+Protected  GFLOPS (med): 3454.0260  (min 2889.9336, max 3825.1355)
+Overhead (median)      : 102.9869 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1378 / 22 / 1
+Recall                : 0.9950
+Detection precision   : 0.9005
+Correction precision  : 91.4573 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=1 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4234 / 2.4488 / 2.5317  ms
+Baseline   GFLOPS (med): 7015.6048  (min 6785.8863, max 7089.1244)
+Protected  min/med/max : 4.5124 / 5.0312 / 5.9046  ms
+Protected  GFLOPS (med): 3414.6724  (min 2909.5550, max 3807.2643)
+Overhead (median)      : 105.4547 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1378 / 22 / 0
+Recall                : 1.0000
+Detection precision   : 0.9009
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=1 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.000770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0008
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4207 / 2.4501 / 2.5042  ms
+Baseline   GFLOPS (med): 7011.8166  (min 6860.4879, max 7096.9582)
+Protected  min/med/max : 3.9392 / 4.5742 / 5.5081  ms
+Protected  GFLOPS (med): 3755.8186  (min 3119.0463, max 4361.2108)
+Overhead (median)      : 86.6921 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 30 / 1378 / 22 / 170
+Recall                : 0.1500
+Detection precision   : 0.5769
+Correction precision  : 90.0000 %
+==================================================
+
+
+### 2048^3  factor=2  tau=0.001541333333
+============================================
+=== FP  2048^3 c=2 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00154133 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0015
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4287 / 2.4514 / 2.5149  ms
+Baseline   GFLOPS (med): 7008.1468  (min 6831.2308, max 7073.6223)
+Protected  min/med/max : 3.6051 / 3.6687 / 3.8331  ms
+Protected  GFLOPS (med): 4682.8169  (min 4482.0199, max 4765.3807)
+Overhead (median)      : 49.6566 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=2 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00154133 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0015
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4231 / 2.4499 / 2.5014  ms
+Baseline   GFLOPS (med): 7012.5092  (min 6868.0329, max 7090.0899)
+Protected  min/med/max : 3.9045 / 4.7230 / 5.9290  ms
+Protected  GFLOPS (med): 3637.4793  (min 2897.6233, max 4400.0617)
+Overhead (median)      : 92.7849 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 124 / 1400 / 0 / 76
+Recall                : 0.6200
+Detection precision   : 1.0000
+Correction precision  : 96.7742 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=2 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00154133 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0015
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4282 / 2.4506 / 2.5171  ms
+Baseline   GFLOPS (med): 7010.4918  (min 6825.2656, max 7075.1517)
+Protected  min/med/max : 4.4994 / 4.9437 / 5.7961  ms
+Protected  GFLOPS (med): 3475.1098  (min 2964.0185, max 3818.2621)
+Overhead (median)      : 101.7344 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=2 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00154133 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0015
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4182 / 2.4469 / 2.5208  ms
+Baseline   GFLOPS (med): 7021.2044  (min 6815.2205, max 7104.4361)
+Protected  min/med/max : 4.4664 / 4.9658 / 6.0001  ms
+Protected  GFLOPS (med): 3459.6259  (min 2863.2595, max 3846.4983)
+Overhead (median)      : 102.9469 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 91.4573 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=2 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00154133 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0015
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4226 / 2.4506 / 2.5339  ms
+Baseline   GFLOPS (med): 7010.4060  (min 6780.0428, max 7091.5913)
+Protected  min/med/max : 4.4898 / 4.9401 / 5.6118  ms
+Protected  GFLOPS (med): 3477.6338  (min 3061.3683, max 3826.4364)
+Overhead (median)      : 101.5855 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=2 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00154133 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0015
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4225 / 2.4491 / 2.5006  ms
+Baseline   GFLOPS (med): 7014.9058  (min 6870.3373, max 7091.8635)
+Protected  min/med/max : 3.9233 / 4.4930 / 5.2047  ms
+Protected  GFLOPS (med): 3823.7324  (min 3300.8490, max 4378.9378)
+Overhead (median)      : 83.4570 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 22 / 1400 / 0 / 178
+Recall                : 0.1100
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+### 2048^3  factor=3  tau=0.002312
+============================================
+=== FP  2048^3 c=3 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.002312 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0023
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4228 / 2.4508 / 2.4984  ms
+Baseline   GFLOPS (med): 7009.9569  (min 6876.2192, max 7090.9824)
+Protected  min/med/max : 3.6020 / 3.6741 / 3.8345  ms
+Protected  GFLOPS (med): 4675.9586  (min 4480.3391, max 4769.5587)
+Overhead (median)      : 49.9149 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=3 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.002312 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0023
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4210 / 2.4471 / 2.5299  ms
+Baseline   GFLOPS (med): 7020.5847  (min 6790.8647, max 7096.0787)
+Protected  min/med/max : 3.9579 / 4.7437 / 5.3558  ms
+Protected  GFLOPS (med): 3621.5897  (min 3207.7244, max 4340.6921)
+Overhead (median)      : 93.8537 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 116 / 1400 / 0 / 84
+Recall                : 0.5800
+Detection precision   : 1.0000
+Correction precision  : 96.5517 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=3 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.002312 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0023
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4223 / 2.4502 / 2.5082  ms
+Baseline   GFLOPS (med): 7011.5733  (min 6849.3503, max 7092.3407)
+Protected  min/med/max : 4.4503 / 5.0128 / 5.7949  ms
+Protected  GFLOPS (med): 3427.2159  (min 2964.6712, max 3860.4114)
+Overhead (median)      : 104.5851 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=3 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.002312 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0023
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4184 / 2.4485 / 2.5258  ms
+Baseline   GFLOPS (med): 7016.4472  (min 6801.6216, max 7103.8162)
+Protected  min/med/max : 4.4329 / 4.9512 / 5.2961  ms
+Protected  GFLOPS (med): 3469.8486  (min 3243.8626, max 3875.5390)
+Overhead (median)      : 102.2119 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 91.4573 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=3 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.002312 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0023
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4170 / 2.4482 / 2.5156  ms
+Baseline   GFLOPS (med): 7017.2525  (min 6829.4467, max 7107.9780)
+Protected  min/med/max : 4.5312 / 4.9559 / 5.5729  ms
+Protected  GFLOPS (med): 3466.5565  (min 3082.7792, max 3791.4202)
+Overhead (median)      : 102.4272 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1400 / 0 / 2
+Recall                : 0.9900
+Detection precision   : 1.0000
+Correction precision  : 99.4949 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=3 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.002312 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0023
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4273 / 2.4503 / 2.5196  ms
+Baseline   GFLOPS (med): 7011.2700  (min 6818.6233, max 7077.8917)
+Protected  min/med/max : 3.9139 / 4.4254 / 5.2167  ms
+Protected  GFLOPS (med): 3882.1440  (min 3293.2358, max 4389.3986)
+Overhead (median)      : 80.6030 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 13 / 1400 / 0 / 187
+Recall                : 0.0650
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+### 2048^3  factor=10  tau=0.007706666667
+============================================
+=== FP  2048^3 c=10 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0077
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4208 / 2.4524 / 2.4959  ms
+Baseline   GFLOPS (med): 7005.3891  (min 6883.2141, max 7096.6415)
+Protected  min/med/max : 3.6140 / 3.7783 / 3.8478  ms
+Protected  GFLOPS (med): 4546.9490  (min 4464.8121, max 4753.6703)
+Overhead (median)      : 54.0679 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=10 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0077
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4199 / 2.4506 / 2.5312  ms
+Baseline   GFLOPS (med): 7010.3974  (min 6787.2295, max 7099.5214)
+Protected  min/med/max : 3.9361 / 4.7263 / 6.0406  ms
+Protected  GFLOPS (med): 3634.9826  (min 2844.0460, max 4364.7454)
+Overhead (median)      : 92.8592 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 105 / 1400 / 0 / 95
+Recall                : 0.5250
+Detection precision   : 1.0000
+Correction precision  : 95.2381 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=10 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0077
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4201 / 2.4475 / 2.5080  ms
+Baseline   GFLOPS (med): 7019.3598  (min 6850.1587, max 7098.7235)
+Protected  min/med/max : 4.2649 / 5.0104 / 6.0184  ms
+Protected  GFLOPS (med): 3428.8158  (min 2854.5599, max 4028.2149)
+Overhead (median)      : 104.7167 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=10 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0077
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4160 / 2.4465 / 2.6621  ms
+Baseline   GFLOPS (med): 7022.1917  (min 6453.4444, max 7110.7818)
+Protected  min/med/max : 4.5451 / 4.9565 / 5.8996  ms
+Protected  GFLOPS (med): 3466.1194  (min 2912.0239, max 3779.8577)
+Overhead (median)      : 102.5952 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 91.4573 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=10 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0077
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4191 / 2.4470 / 2.5078  ms
+Baseline   GFLOPS (med): 7020.8773  (min 6850.5329, max 7101.6315)
+Protected  min/med/max : 3.9702 / 4.9358 / 6.0516  ms
+Protected  GFLOPS (med): 3480.6458  (min 2838.9073, max 4327.2366)
+Overhead (median)      : 101.7119 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 184 / 1400 / 0 / 16
+Recall                : 0.9200
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 2048^3 c=10 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00770667 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0077
+--- Timing (worst rank) ---
+Baseline   min/med/max : 2.4203 / 2.4500 / 2.5105  ms
+Baseline   GFLOPS (med): 7012.0913  (min 6843.3016, max 7098.1310)
+Protected  min/med/max : 3.6444 / 4.3171 / 4.9551  ms
+Protected  GFLOPS (med): 3979.4681  (min 3467.1239, max 4714.0783)
+Overhead (median)      : 76.2067 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 3 / 1400 / 0 / 197
+Recall                : 0.0150
+Detection precision   : 1.0000
+Correction precision  : 33.3333 %
+==================================================
+
+
+### 4096^3  factor=1  tau=0.007213666667
+============================================
+=== FP  4096^3 c=1 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0072
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.5230 / 17.8188 / 20.7965  ms
+Baseline   GFLOPS (med): 7713.1439  (min 6608.7432, max 7843.3353)
+Protected  min/med/max : 18.3110 / 18.6577 / 21.9315  ms
+Protected  GFLOPS (med): 7366.3242  (min 6266.7466, max 7505.8120)
+Overhead (median)      : 4.7082 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1599 / 1 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=1 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0072
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4119 / 17.8231 / 20.3687  ms
+Baseline   GFLOPS (med): 7711.2614  (min 6747.5588, max 7893.3844)
+Protected  min/med/max : 18.4023 / 20.2391 / 23.4123  ms
+Protected  GFLOPS (med): 6790.7728  (min 5870.3854, max 7468.5918)
+Overhead (median)      : 13.5550 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 113 / 1399 / 1 / 87
+Recall                : 0.5650
+Detection precision   : 0.9912
+Correction precision  : 95.5752 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=1 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0072
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4222 / 17.8176 / 18.7113  ms
+Baseline   GFLOPS (med): 7713.6491  (min 7345.2346, max 7888.7364)
+Protected  min/med/max : 18.5928 / 20.4045 / 23.4522  ms
+Protected  GFLOPS (med): 6735.7036  (min 5860.3861, max 7392.0676)
+Overhead (median)      : 14.5188 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1399 / 1 / 0
+Recall                : 1.0000
+Detection precision   : 0.9950
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=1 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0072
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4561 / 17.8147 / 18.8845  ms
+Baseline   GFLOPS (med): 7714.9260  (min 7277.8840, max 7873.3915)
+Protected  min/med/max : 18.4884 / 20.3699 / 24.2561  ms
+Protected  GFLOPS (med): 6747.1530  (min 5666.1700, max 7433.7962)
+Overhead (median)      : 14.3434 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1399 / 1 / 1
+Recall                : 0.9950
+Detection precision   : 0.9950
+Correction precision  : 90.4523 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=1 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0072
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.2853 / 17.8024 / 18.9152  ms
+Baseline   GFLOPS (med): 7720.2547  (min 7266.0710, max 7951.2122)
+Protected  min/med/max : 18.3358 / 20.1622 / 23.4742  ms
+Protected  GFLOPS (med): 6816.6662  (min 5854.8828, max 7495.6564)
+Overhead (median)      : 13.2556 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 182 / 1399 / 1 / 18
+Recall                : 0.9100
+Detection precision   : 0.9945
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=1 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.00721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0072
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.3685 / 17.8289 / 19.3377  ms
+Baseline   GFLOPS (med): 7708.7520  (min 7107.2892, max 7913.1259)
+Protected  min/med/max : 18.2631 / 19.1049 / 22.6668  ms
+Protected  GFLOPS (med): 7193.9247  (min 6063.4519, max 7525.4865)
+Overhead (median)      : 7.1564 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 6 / 1399 / 1 / 194
+Recall                : 0.0300
+Detection precision   : 0.8571
+Correction precision  : 83.3333 %
+==================================================
+
+
+### 4096^3  factor=2  tau=0.01442733333
+============================================
+=== FP  4096^3 c=2 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0144273 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0144
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.3927 / 17.8122 / 20.6522  ms
+Baseline   GFLOPS (med): 7715.9928  (min 6654.9442, max 7902.1098)
+Protected  min/med/max : 18.3785 / 18.6400 / 21.5754  ms
+Protected  GFLOPS (med): 7373.3439  (min 6370.1576, max 7478.2306)
+Overhead (median)      : 4.6471 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=2 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0144273 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0144
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.2206 / 17.7144 / 18.0761  ms
+Baseline   GFLOPS (med): 7758.6207  (min 7603.3521, max 7981.0813)
+Protected  min/med/max : 18.2644 / 19.8084 / 23.2987  ms
+Protected  GFLOPS (med): 6938.4114  (min 5898.9969, max 7524.9781)
+Overhead (median)      : 11.8213 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 106 / 1400 / 0 / 94
+Recall                : 0.5300
+Detection precision   : 1.0000
+Correction precision  : 95.2830 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=2 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0144273 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0144
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.2690 / 17.7115 / 19.8066  ms
+Baseline   GFLOPS (med): 7759.8608  (min 6939.0511, max 7958.7306)
+Protected  min/med/max : 18.2621 / 20.3130 / 23.7005  ms
+Protected  GFLOPS (med): 6766.0575  (min 5798.9930, max 7525.8953)
+Overhead (median)      : 14.6881 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=2 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0144273 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0144
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4667 / 17.7930 / 19.1371  ms
+Baseline   GFLOPS (med): 7724.3259  (min 7181.8210, max 7868.6206)
+Protected  min/med/max : 18.5512 / 20.2857 / 23.3945  ms
+Protected  GFLOPS (med): 6775.1504  (min 5874.8459, max 7408.6148)
+Overhead (median)      : 14.0097 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 90.4523 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=2 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0144273 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0144
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.5038 / 17.8092 / 19.0487  ms
+Baseline   GFLOPS (med): 7717.3008  (min 7215.1477, max 7851.9679)
+Protected  min/med/max : 18.4948 / 20.3665 / 24.7896  ms
+Protected  GFLOPS (med): 6748.2897  (min 5544.2290, max 7431.2234)
+Overhead (median)      : 14.3594 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 168 / 1400 / 0 / 32
+Recall                : 0.8400
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=2 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0144273 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0144
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.2497 / 17.8267 / 18.8677  ms
+Baseline   GFLOPS (med): 7709.7275  (min 7284.3663, max 7967.6118)
+Protected  min/med/max : 18.1304 / 19.1333 / 22.6717  ms
+Protected  GFLOPS (med): 7183.2338  (min 6062.1285, max 7580.5632)
+Overhead (median)      : 7.3295 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 1 / 1400 / 0 / 199
+Recall                : 0.0050
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+### 4096^3  factor=3  tau=0.021641
+============================================
+=== FP  4096^3 c=3 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.021641 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0216
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.2687 / 17.7618 / 21.0570  ms
+Baseline   GFLOPS (med): 7737.8751  (min 6527.0108, max 7958.8620)
+Protected  min/med/max : 18.0892 / 18.5825 / 22.1174  ms
+Protected  GFLOPS (med): 7396.1454  (min 6214.0779, max 7597.8484)
+Overhead (median)      : 4.6204 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=3 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.021641 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0216
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.2392 / 17.7374 / 17.9989  ms
+Baseline   GFLOPS (med): 7748.5396  (min 7635.9619, max 7972.4744)
+Protected  min/med/max : 18.2798 / 19.5873 / 23.3015  ms
+Protected  GFLOPS (med): 7016.7449  (min 5898.2784, max 7518.6332)
+Overhead (median)      : 10.4293 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 99 / 1400 / 0 / 101
+Recall                : 0.4950
+Detection precision   : 1.0000
+Correction precision  : 94.9495 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=3 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.021641 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0216
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.3875 / 17.7964 / 18.5621  ms
+Baseline   GFLOPS (med): 7722.8332  (min 7404.2795, max 7904.4812)
+Protected  min/med/max : 18.5003 / 20.5929 / 23.5483  ms
+Protected  GFLOPS (med): 6674.0990  (min 5836.4619, max 7429.0286)
+Overhead (median)      : 15.7135 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=3 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.021641 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0216
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4373 / 17.8032 / 18.7915  ms
+Baseline   GFLOPS (med): 7719.9099  (min 7313.8758, max 7881.9001)
+Protected  min/med/max : 18.4951 / 20.4652 / 23.5448  ms
+Protected  GFLOPS (med): 6715.7504  (min 5837.3332, max 7431.1181)
+Overhead (median)      : 14.9523 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 90.4523 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=3 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.021641 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0216
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4502 / 17.8433 / 19.1123  ms
+Baseline   GFLOPS (med): 7702.5572  (min 7191.1250, max 7876.0793)
+Protected  min/med/max : 18.3232 / 20.3326 / 23.5130  ms
+Protected  GFLOPS (med): 6759.5246  (min 5845.2306, max 7500.8267)
+Overhead (median)      : 13.9512 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 155 / 1400 / 0 / 45
+Recall                : 0.7750
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=3 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.021641 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0216
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.5723 / 17.8173 / 18.8211  ms
+Baseline   GFLOPS (med): 7713.7915  (min 7302.3993, max 7821.3492)
+Protected  min/med/max : 18.4096 / 19.1219 / 22.5957  ms
+Protected  GFLOPS (med): 7187.5340  (min 6082.5226, max 7465.6270)
+Overhead (median)      : 7.3218 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1400 / 0 / 200
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+### 4096^3  factor=10  tau=0.07213666667
+============================================
+=== FP  4096^3 c=10 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0721
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.3098 / 17.8150 / 20.6728  ms
+Baseline   GFLOPS (med): 7714.7974  (min 6648.2979, max 7939.9472)
+Protected  min/med/max : 18.0693 / 18.6187 / 21.6566  ms
+Protected  GFLOPS (med): 7381.7553  (min 6346.2796, max 7606.2009)
+Overhead (median)      : 4.5117 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=10 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0721
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.1386 / 17.6932 / 17.9545  ms
+Baseline   GFLOPS (med): 7767.8973  (min 7654.8681, max 8019.2422)
+Protected  min/med/max : 18.1383 / 19.5658 / 23.3421  ms
+Protected  GFLOPS (med): 7024.4395  (min 5888.0377, max 7577.2686)
+Overhead (median)      : 10.5839 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 81 / 1400 / 0 / 119
+Recall                : 0.4050
+Detection precision   : 1.0000
+Correction precision  : 93.8272 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=10 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0721
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.6244 / 17.8439 / 19.6916  ms
+Baseline   GFLOPS (med): 7702.2947  (min 6979.5720, max 7798.2141)
+Protected  min/med/max : 18.4950 / 20.4995 / 23.6993  ms
+Protected  GFLOPS (med): 6704.5151  (min 5799.2901, max 7431.1406)
+Overhead (median)      : 14.8822 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 199 / 1400 / 0 / 1
+Recall                : 0.9950
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=10 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0721
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4724 / 17.8254 / 19.8160  ms
+Baseline   GFLOPS (med): 7710.2959  (min 6935.7437, max 7866.0725)
+Protected  min/med/max : 18.3816 / 20.5692 / 23.5679  ms
+Protected  GFLOPS (med): 6681.7682  (min 5831.6246, max 7476.9955)
+Overhead (median)      : 15.3930 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1400 / 0 / 2
+Recall                : 0.9900
+Detection precision   : 1.0000
+Correction precision  : 90.4040 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=10 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0721
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.5061 / 17.7881 / 18.8055  ms
+Baseline   GFLOPS (med): 7726.4402  (min 7308.4305, max 7850.9201)
+Protected  min/med/max : 18.4950 / 20.2408 / 23.4978  ms
+Protected  GFLOPS (med): 6790.1790  (min 5849.0174, max 7431.1519)
+Overhead (median)      : 13.7885 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 112 / 1400 / 0 / 88
+Recall                : 0.5600
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 4096^3 c=10 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.0721367 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0721
+--- Timing (worst rank) ---
+Baseline   min/med/max : 17.4086 / 17.7919 / 18.9980  ms
+Baseline   GFLOPS (med): 7724.7900  (min 7234.4078, max 7894.8788)
+Protected  min/med/max : 18.3892 / 19.2226 / 22.5769  ms
+Protected  GFLOPS (med): 7149.8766  (min 6087.5895, max 7473.8984)
+Overhead (median)      : 8.0409 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1400 / 0 / 200
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+### 8192^3  factor=1  tau=0.019747
+============================================
+=== FP  8192^3 c=1 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.019747 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0197
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.6463 / 110.1793 / 126.6073  ms
+Baseline   GFLOPS (med): 9979.2980  (min 8684.4229, max 10214.1153)
+Protected  min/med/max : 111.2282 / 114.0242 / 118.2558  ms
+Protected  GFLOPS (med): 9642.7905  (min 9297.7421, max 9885.1884)
+Overhead (median)      : 3.4897 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1598 / 2 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=1 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.019747 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0197
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.2184 / 109.4786 / 127.6576  ms
+Baseline   GFLOPS (med): 10043.1683  (min 8612.9751, max 10254.8764)
+Protected  min/med/max : 111.0747 / 116.7531 / 125.8250  ms
+Protected  GFLOPS (med): 9417.4077  (min 8738.4229, max 9898.8451)
+Overhead (median)      : 6.6447 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 102 / 1398 / 2 / 98
+Recall                : 0.5100
+Detection precision   : 0.9808
+Correction precision  : 94.1176 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=1 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.019747 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0197
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.5546 / 109.7553 / 127.2098  ms
+Baseline   GFLOPS (med): 10017.8453  (min 8643.2944, max 10222.8233)
+Protected  min/med/max : 113.3319 / 117.6388 / 124.3380  ms
+Protected  GFLOPS (med): 9346.5011  (min 8842.9227, max 9701.6975)
+Overhead (median)      : 7.1828 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1398 / 2 / 0
+Recall                : 1.0000
+Detection precision   : 0.9901
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=1 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.019747 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0197
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.3467 / 109.2864 / 126.9627  ms
+Baseline   GFLOPS (med): 10060.8280  (min 8660.1141, max 10242.6263)
+Protected  min/med/max : 112.8157 / 117.7272 / 123.9433  ms
+Protected  GFLOPS (med): 9339.4849  (min 8871.0837, max 9746.0908)
+Overhead (median)      : 7.7236 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1398 / 2 / 2
+Recall                : 0.9900
+Detection precision   : 0.9900
+Correction precision  : 90.9091 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=1 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.019747 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0197
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.4828 / 109.2999 / 125.5844  ms
+Baseline   GFLOPS (med): 10059.5830  (min 8755.1583, max 10229.6518)
+Protected  min/med/max : 110.2943 / 117.0216 / 134.6438  ms
+Protected  GFLOPS (med): 9395.8029  (min 8166.0759, max 9968.8928)
+Overhead (median)      : 7.0646 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 170 / 1398 / 2 / 30
+Recall                : 0.8500
+Detection precision   : 0.9884
+Correction precision  : 99.4118 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=1 zone=sig_low ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.019747 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_low)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0197
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.4759 / 109.4954 / 126.2814  ms
+Baseline   GFLOPS (med): 10041.6282  (min 8706.8345, max 10230.3132)
+Protected  min/med/max : 110.1561 / 113.4604 / 128.0608  ms
+Protected  GFLOPS (med): 9690.7115  (min 8585.8583, max 9981.3996)
+Overhead (median)      : 3.6212 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1398 / 2 / 200
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+### 8192^3  factor=2  tau=0.039494
+============================================
+=== FP  8192^3 c=2 ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.039494 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0395
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.8427 / 109.8750 / 128.1003  ms
+Baseline   GFLOPS (med): 10006.9291  (min 8583.2105, max 10195.5105)
+Protected  min/med/max : 111.5413 / 113.7662 / 119.2865  ms
+Protected  GFLOPS (med): 9664.6619  (min 9217.4024, max 9857.4423)
+Overhead (median)      : 3.5414 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 1600 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=2 zone=any ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.039494 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=any)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0395
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.2577 / 109.1712 / 126.7397  ms
+Baseline   GFLOPS (med): 10071.4400  (min 8675.3510, max 10251.1178)
+Protected  min/med/max : 110.1911 / 116.1550 / 123.0215  ms
+Protected  GFLOPS (med): 9465.9016  (min 8937.5602, max 9978.2224)
+Overhead (median)      : 6.3970 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 97 / 1400 / 0 / 103
+Recall                : 0.4850
+Detection precision   : 1.0000
+Correction precision  : 93.8144 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=2 zone=sign ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.039494 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sign)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0395
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.5679 / 109.2797 / 121.1946  ms
+Baseline   GFLOPS (med): 10061.4459  (min 9072.2832, max 10221.5596)
+Protected  min/med/max : 113.5915 / 117.8772 / 123.5202  ms
+Protected  GFLOPS (med): 9327.6053  (min 8901.4692, max 9679.5199)
+Overhead (median)      : 7.8674 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 200 / 1400 / 0 / 0
+Recall                : 1.0000
+Detection precision   : 1.0000
+Correction precision  : 100.0000 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=2 zone=exponent ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.039494 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=exponent)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0395
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.3412 / 109.4856 / 116.7907  ms
+Baseline   GFLOPS (med): 10042.5273  (min 9414.3766, max 10243.1436)
+Protected  min/med/max : 112.4125 / 117.6492 / 123.9172  ms
+Protected  GFLOPS (med): 9345.6776  (min 8872.9562, max 9781.0442)
+Overhead (median)      : 7.4564 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 198 / 1400 / 0 / 2
+Recall                : 0.9900
+Detection precision   : 1.0000
+Correction precision  : 90.9091 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=2 zone=sig_high ===
+============================================
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=swifi)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 100  (fresh A,B per trial)
+Threshold      : 0.039494 (override)
+Encoding       : overlap
+GPUs visible   : 2
+
+[Rank 0] 100 timed trials × 1 iters/trial  (fresh A,B per trial)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=swifi (zone=sig_high)
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 0.0395
+--- Timing (worst rank) ---
+Baseline   min/med/max : 107.6363 / 109.3064 / 116.9090  ms
+Baseline   GFLOPS (med): 10058.9879  (min 9404.8514, max 10215.0647)
+Protected  min/med/max : 111.1652 / 116.9416 / 123.2890  ms
+Protected  GFLOPS (med): 9402.2265  (min 8918.1623, max 9890.7872)
+Overhead (median)      : 6.9852 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 150 / 1400 / 0 / 50
+Recall                : 0.7500
+Detection precision   : 1.0000
+Correction precision  : 99.3333 %
+==================================================
+
+
+============================================
+=== SWIFI 8192^3 c=2 zone=sig_low ===
+============================================

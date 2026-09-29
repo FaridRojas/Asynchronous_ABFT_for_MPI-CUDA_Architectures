@@ -34,12 +34,14 @@ fixed constant.
 
 ## Requirements
 
-- CUDA toolkit (`nvcc`, cuBLAS). Tested with 11.8.
+- CUDA toolkit (`nvcc`, cuBLAS). Tested with 11.8 (Titan X) and with the
+  NVIDIA HPC SDK 23.1, CUDA 12.0 (A100).
 - An MPI implementation (`mpicc`). Tested with OpenMPI 4.1.6.
 - A C++17 host compiler. Tested with GCC 11.
 - Python 3 with `numpy`, `pandas` and `matplotlib`, for analysis and plots.
-- Slurm, for the launchers in `scripts/`. They target the SC3-UIS cluster:
-  node `felix` (2 × GeForce GTX Titan X, Maxwell) and `pacca` (A100, Ampere).
+- Slurm, for the launchers in `scripts/`. They target two clusters: node
+  `felix` of SC3-UIS (2 × GeForce GTX Titan X, Maxwell) and node `paccaA100`
+  of the Universidad de Cartagena (A100, Ampere).
   Adjust the `#SBATCH` headers and `module load` lines for another system.
 
 ## Build
@@ -65,8 +67,9 @@ only needed for interactive use. `abft_gemm --help` lists all options.
 | Execution traces | `profile_pacca/` (A100), `multigemm/` (Titan X) | `run_profile_pacca.sbatch`, `run_multitrace_felix.sbatch`, `plot_multigemm_traza.py` |
 | Noise characterisation and threshold | `calibration/` | `run_calibrate_felix.sbatch`, `analyze_calibration.py` |
 | Detection and correction by IEEE-754 region | `abft_metrics.csv` (`swifi` rows), `campaign/` | `run_abft_felix.sbatch`, `plot_metrics.py` |
-| Sensitivity to the threshold factor | not included | `run_tau_sweep_felix.sbatch` |
+| Sensitivity to the threshold factor | `tau_sweep/abft_tau_sweep.csv` | `run_tau_sweep_felix.sbatch` |
 | Methodology figures | none | `plot_metodologia_figs.py` |
+| Thesis figures with Spanish labels | all of the above | `figuras_libro.py` |
 
 `abft_metrics.csv` holds one row per measured configuration: the 40-size
 square sweep in three conditions (unprotected, protected without a fault,
@@ -75,6 +78,13 @@ campaign over six sizes and five regions of the IEEE-754 word. Overheads are
 computed against the unprotected phase of the same campaign.
 
 `export_eps.py` re-renders the data plots as EPS for LaTeX.
+
+`figuras_libro.py` renders every data figure of the thesis, with Spanish
+labels, into the directory given by `--out`. It runs the plotters above
+without modifying them and translates their labels on the fly. It also
+redraws the profiling traces from the Nsight Systems reports in
+`docs/profile_pacca/` (exporting a report to SQLite requires `nsys`) and
+adds the quantile–quantile plots of the extreme-value fit.
 
 ## Notes on reproducibility
 
@@ -86,8 +96,9 @@ computed against the unprotected phase of the same campaign.
   does not require running the calibration again.
 - The threshold analysis and every figure can be regenerated from the data in
   `docs/` without GPU access.
-- The per-trial output of the threshold-factor sweep is not included in this
-  repository; `run_tau_sweep_felix.sbatch` regenerates it.
+- The threshold-factor sweep is in `docs/tau_sweep/`. The job stopped before
+  finishing 8192³, so only 1024³, 2048³ and 4096³ are complete; those are the
+  sizes reported in the thesis.
 
 ## Reference implementation
 
