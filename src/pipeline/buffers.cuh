@@ -2,8 +2,8 @@
 
 #include "../core/common.cuh"
 #include "../distribution/grid.cuh"
+#include "../kernels/abft_stepwise.cuh"   // ENC_CHUNKS
 
-// Per-rank pipeline buffers — pre-allocated once for the full run.
 struct PipelineBuffers {
     int F;
     int N_frag_max;
@@ -22,9 +22,15 @@ struct PipelineBuffers {
     double* dRowDiff  = nullptr;   // [F]
 
     // Device localisation scratch (single instance — verify stream is
+    // serialised so this is reused across frags/iters safely)
     double* dRowSumB     = nullptr;   // [K]
     double* dExpectedCol = nullptr;   // [M_b]
     double* dActualCol   = nullptr;   // [M_b]
+
+    // Encoding scratch: chunked partial sums for the parallelised input
+    // encoding (colSumA / expectedRow).  Single instance, reused across the
+    // sequential encode launches on the in-order verify stream.
+    double* dEncPart     = nullptr;   // [ENC_CHUNKS * max(K, N_b)]
 
     // Device aggregate counters, host-read ONCE after the timed loop
     int* dCM        = nullptr;   // [4] = {TP,TN,FP,FN}
@@ -73,6 +79,8 @@ inline void buffers_init(PipelineBuffers& b, int F, int M_b, int N_b, int K, int
     CUDA_CHECK(cudaMalloc(&b.dActualCol,   sizeof(double) * M_b));
     CUDA_CHECK(cudaMalloc(&b.dCM,          sizeof(int)    * 4));
     CUDA_CHECK(cudaMalloc(&b.dNRestored,   sizeof(int)));
+    CUDA_CHECK(cudaMalloc(&b.dEncPart,
+                          sizeof(double) * (size_t)ENC_CHUNKS * (K > N_b ? K : N_b)));
     b.dGolden = nullptr;   // lazily allocated by pass_online_loop in SWIFI runs
 
     CUDA_CHECK(cudaStreamCreate(&b.compute_stream));
@@ -96,6 +104,7 @@ inline void buffers_free(PipelineBuffers& b) {
     cudaFree(b.dActualCol);
     cudaFree(b.dCM);
     cudaFree(b.dNRestored);
+    cudaFree(b.dEncPart);
     if (b.dGolden) cudaFree(b.dGolden);
 
     cudaStreamDestroy(b.compute_stream);

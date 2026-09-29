@@ -18,7 +18,7 @@
 #include <cstdint>
 #include <chrono>
 
-// Error-checking macros
+// Macros for error checking and reporting; aborts on failure with a message and non-zero exit code.
 #define CUDA_CHECK(call) do {                                       \
     cudaError_t err = (call);                                       \
     if (err != cudaSuccess) {                                       \
@@ -52,15 +52,15 @@
 using clk = std::chrono::high_resolution_clock;
 
 // Math utilities
-
-/// Fill a vector with pseudo-random values in [-1, 1]
+// ---------------------------------------------------------------------------
+// Fill a vector with pseudo-random values in [-1, 1]
 inline void fill_random(std::vector<float>& M, uint64_t seed) {
     std::mt19937_64 gen(seed);
     std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
     for (auto& x : M) x = dist(gen);
 }
 
-/// Infinity norm of a row-major matrix (rows x cols) with leading dim ld.
+// Infinity norm of a row-major matrix (rows x cols) with leading dim ld.
 inline double matrix_inf_norm(const float* M, int rows, int cols, int ld) {
     double max_row_sum = 0.0;
     for (int i = 0; i < rows; ++i) {
@@ -73,7 +73,8 @@ inline double matrix_inf_norm(const float* M, int rows, int cols, int ld) {
     return max_row_sum;
 }
 
-// / Stepwise-checksum theoretical detection threshold (worst-case rounding bound):
+// Stepwise-checksum theoretical detection threshold 
+// run `--calibrate` to obtain an empirically tuned threshold.
 inline double compute_threshold_formula(int k, double norm_A_inf, double norm_B_inf) {
     const double eps = static_cast<double>(FLT_EPSILON);
     double denom = 1.0 - static_cast<double>(k) * eps;
@@ -81,12 +82,13 @@ inline double compute_threshold_formula(int k, double norm_A_inf, double norm_B_
     double gamma_k = (static_cast<double>(k) * eps) / denom;
     return gamma_k * norm_A_inf * norm_B_inf;
 }
+// ---------------------------------------------------------------------------
 
 // Statistics over timing samples
 struct TimingStats {
     double min_ms    = 0.0;
     double median_ms = 0.0;
-    double mean_ms   = 0.0;   // arithmetic mean (just like theirs) 
+    double mean_ms   = 0.0;   // arithmetic mean (apples-to-apples with theirs)
     double max_ms    = 0.0;
     int    n_samples = 0;
 };

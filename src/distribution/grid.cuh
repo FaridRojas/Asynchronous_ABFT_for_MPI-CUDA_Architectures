@@ -28,6 +28,7 @@ inline void split_dim(int total, int parts,
 }
 
 // Distribute A (M x K, row-major) from rank 0 to (pr, *) ranks.
+// Each rank ends up with a contiguous A_stripe of shape (M_b x K).
 inline void distribute_A(const std::vector<float>& A_full,   // valid only on rank 0
                          std::vector<float>&       A_stripe, // sized (M_b * K) on every rank
                          const std::vector<int>&   row_counts,
@@ -58,6 +59,8 @@ inline void distribute_A(const std::vector<float>& A_full,   // valid only on ra
 }
 
 // Distribute B (K x N, row-major) from rank 0 to (*, pc) ranks.
+// Each rank ends up with B_stripe of shape (K x N_b) — rank 0 packs column
+// blocks into contiguous buffers before sending.
 inline void distribute_B(const std::vector<float>& B_full,   // valid only on rank 0
                          std::vector<float>&       B_stripe, // sized (K * N_b)
                          const std::vector<int>&   col_counts,

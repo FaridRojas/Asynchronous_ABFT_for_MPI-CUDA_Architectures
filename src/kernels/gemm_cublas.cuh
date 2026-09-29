@@ -2,8 +2,7 @@
 
 #include "../core/common.cuh"
 
-// cuBLAS-based GEMM (replaces hand-written kernels)
-
+// cuBLAS-based GEMM 
 inline void gemm_cublas(cublasHandle_t handle,
                         const float* dA, int lda_row,
                         const float* dB, int ldb_row,
@@ -21,7 +20,7 @@ inline void gemm_cublas(cublasHandle_t handle,
                              dC, ldc_row));
 }
 
-// / Force cuBLAS module load + JIT + heuristic-cache to warm *before* timed
+// Force cuBLAS module load + JIT + heuristic-cache to warm *before* timed measurements. 
 inline void gemm_warmup(cublasHandle_t handle, cudaStream_t stream) {
     constexpr int W           = 64;
     constexpr int WARMUP_REPS = 3;

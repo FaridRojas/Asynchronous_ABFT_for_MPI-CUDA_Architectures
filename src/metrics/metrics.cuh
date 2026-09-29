@@ -3,8 +3,6 @@
 #include "../core/common.cuh"
 #include "../core/types.cuh"
 
-// Metrics Module — confusion matrix, derived metrics, MPI aggregation,
-
 struct ConfusionMatrix {
     int TP = 0;   // injected AND detected
     int TN = 0;   // not injected AND not detected
@@ -19,7 +17,7 @@ struct ExperimentMetrics {
     TimingStats protected_;      // timing stats for the chosen scheme
     double      overhead_pct = 0.0;
 
-    // GFLOPS throughput (whole-problem 2*M*N*K, worst-rank time).
+    // GFLOPS throughput 
     double baseline_gflops_med = 0.0;
     double baseline_gflops_min = 0.0;
     double baseline_gflops_max = 0.0;
@@ -42,7 +40,7 @@ struct ExperimentMetrics {
 
     double threshold_used   = 0.0;   // single number printed in summary
 
-    std::string scheme;          // "post" or "in-situ"
+    std::string scheme;         
     std::string inject;          // "none" or "swifi"
     std::string swifi_zone = "any";  // any|sign|exponent|sig_high|sig_low
     bool        baseline_only = false;
@@ -101,7 +99,9 @@ inline TimingStats mpi_reduce_timing_max(const TimingStats& local, MPI_Comm comm
     return r;
 }
 
+// ---------------------------------------------------------------------------
 // Derived metrics
+// ---------------------------------------------------------------------------
 inline double compute_recall(const ConfusionMatrix& cm) {
     int d = cm.TP + cm.FN;
     return (d > 0) ? static_cast<double>(cm.TP) / d : 0.0;
@@ -123,6 +123,8 @@ inline double compute_runtime_overhead(double t_protected_ms, double t_baseline_
 }
 
 // GFLOPS/s for a GEMM of size M×N×K given the per-iter wall time (ms).
+// Mirrors the reference project's formula: 2·M·N·K FLOPs per GEMM, divided
+// by elapsed seconds.
 inline double compute_gflops(double time_ms, int M, int N, int K) {
     if (time_ms <= 0.0) return 0.0;
     double flops = 2.0 * (double)M * (double)N * (double)K;

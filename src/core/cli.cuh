@@ -38,6 +38,14 @@ inline void print_help() {
 "                                 uses 20, CONFUSION-MATRIX campaign uses 100\n"
 "  --reseed-per-trial             regenerate A,B (and recompute golden) before\n"
 "                                 each timed trial so every sample is independent\n"
+"  --encoding-mode {amortized|timed|overlap}\n"
+"                                 where the one-time input encoding (colSumA +\n"
+"                                 expectedRow) sits vs the timed window:\n"
+"                                 amortized = before the window (default);\n"
+"                                 timed     = inside, completed before the loop;\n"
+"                                 overlap   = inside, on verify_stream, hidden\n"
+"                                 behind iteration 0's GEMMs\n"
+"  --time-encoding                alias for --encoding-mode timed\n"
 "  --seed-a S, --seed-b S         RNG seeds for A and B\n"
 "  --csv PATH                     metrics CSV output path (default abft_metrics.csv)\n"
 "  --calib-diffs PATH             where to dump every observed |actual-expected|\n"
@@ -66,6 +74,8 @@ inline ExperimentConfig parse_args(int argc, char** argv) {
         else if (a == "--warmups"            && i + 1 < argc) c.warmups       = std::atoi(argv[++i]);
         else if (a == "--samples"            && i + 1 < argc) c.num_samples   = std::atoi(argv[++i]);
         else if (a == "--reseed-per-trial")                   c.reseed_per_trial = true;
+        else if (a == "--encoding-mode"      && i + 1 < argc) c.encoding_mode = argv[++i];
+        else if (a == "--time-encoding")                      c.encoding_mode = "timed";
         else if (a == "--seed-a"             && i + 1 < argc) c.seed_a        = std::strtoull(argv[++i], nullptr, 10);
         else if (a == "--seed-b"             && i + 1 < argc) c.seed_b        = std::strtoull(argv[++i], nullptr, 10);
         else if (a == "--csv"                && i + 1 < argc) c.csv_path        = argv[++i];
