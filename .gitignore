@@ -1,0 +1,23 @@
+# Build artifacts
+abft_gemm
+multi_gemm
+ft_sgemm
+ft_sgemm_inj
+*.o
+
+# Local secrets (cluster user, host overrides) — never commit
+scripts/.env.local
+
+# Reference project, cloned on demand by scripts/example_comparison.sh.
+# It is not redistributed with this repository.
+Fault-Tolerant-SGEMM-on-NVIDIA-GPUs/
+cuda-samples/
+
+# Slurm logs written next to the launchers
+scripts/*.out
+scripts/*.err
+
+# Scratch CSVs that the launchers write in the working directory
+/_calib_*.csv
+/abft_*.csv
+/compare_all.csv
