@@ -1,0 +1,3 @@
+==PROF== Connected to process 1149275 (/home/latorresn/fcrojasv/asynchronous_abft/Fault-Tolerant-SGEMM-on-NVIDIA-GPUs/build/ft_sgemm)
+==PROF== Disconnected from process 1149275
+==PROF== Report: /home/latorresn/fcrojasv/asynchronous_abft/scripts/profile/big_ns_theirs_fused.ncu-rep

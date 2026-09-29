@@ -1,0 +1,12 @@
+Start verification!
+[Kernel Completed Successfully]
+kernel 16 finish verified!
+################## Performance (GFLOPS) ########################
+Matrix Size         |    8192|
+abft_kernel_huge    |    7796|
+Collecting data...
+Generating '/tmp/nsys-latorresn/nsys-report-27fb.qdstrm'
+Press Ctrl-C to stop symbol files downloading
+[1/1] [0%                          ] big_sq_theirs_fused.nsys-rep[1/1] [0%                          ] big_sq_theirs_fused.nsys-rep[1/1] [========41%                 ] big_sq_theirs_fused.nsys-rep[1/1] [=========44%                ] big_sq_theirs_fused.nsys-rep[1/1] [==========47%               ] big_sq_theirs_fused.nsys-rep[1/1] [==========48%               ] big_sq_theirs_fused.nsys-rep[1/1] [==========49%               ] big_sq_theirs_fused.nsys-rep[1/1] [==============63%           ] big_sq_theirs_fused.nsys-rep[1/1] [==================78%       ] big_sq_theirs_fused.nsys-rep[1/1] [===================79%      ] big_sq_theirs_fused.nsys-rep[1/1] [===================82%      ] big_sq_theirs_fused.nsys-rep[1/1] [=======================94%  ] big_sq_theirs_fused.nsys-rep[1/1] [========================100%] big_sq_theirs_fused.nsys-rep[1/1] [========================100%] big_sq_theirs_fused.nsys-rep
+Generated:
+	/home/latorresn/fcrojasv/asynchronous_abft/scripts/profile/big_sq_theirs_fused.nsys-rep

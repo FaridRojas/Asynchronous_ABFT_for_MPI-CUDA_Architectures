@@ -1,0 +1,6 @@
+Start verification!
+[Kernel Completed Successfully]
+kernel 16 finish verified!
+################## Performance (GFLOPS) ########################
+Matrix Size         |    1024|
+abft_kernel_huge    |       4|

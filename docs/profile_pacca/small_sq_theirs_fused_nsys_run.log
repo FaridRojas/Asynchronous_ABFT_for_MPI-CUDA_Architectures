@@ -1,0 +1,12 @@
+Start verification!
+[Kernel Completed Successfully]
+kernel 16 finish verified!
+################## Performance (GFLOPS) ########################
+Matrix Size         |    1024|
+abft_kernel_huge    |    4301|
+Collecting data...
+Generating '/tmp/nsys-latorresn/nsys-report-8c32.qdstrm'
+Press Ctrl-C to stop symbol files downloading
+[1/1] [0%                          ] small_sq_theirs_fused.nsys-rep[1/1] [0%                          ] small_sq_theirs_fused.nsys-rep[1/1] [11%                         ] small_sq_theirs_fused.nsys-rep[1/1] [====25%                     ] small_sq_theirs_fused.nsys-rep[1/1] [=======38%                  ] small_sq_theirs_fused.nsys-rep[1/1] [=======39%                  ] small_sq_theirs_fused.nsys-rep[1/1] [========40%                 ] small_sq_theirs_fused.nsys-rep[1/1] [========41%                 ] small_sq_theirs_fused.nsys-rep[1/1] [========42%                 ] small_sq_theirs_fused.nsys-rep[1/1] [=========43%                ] small_sq_theirs_fused.nsys-rep[1/1] [===========51%              ] small_sq_theirs_fused.nsys-rep[1/1] [=================74%        ] small_sq_theirs_fused.nsys-rep[1/1] [========================100%] small_sq_theirs_fused.nsys-rep[1/1] [========================100%] small_sq_theirs_fused.nsys-rep
+Generated:
+	/home/latorresn/fcrojasv/asynchronous_abft/scripts/profile/small_sq_theirs_fused.nsys-rep

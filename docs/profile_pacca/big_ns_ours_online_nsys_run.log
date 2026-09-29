@@ -1,0 +1,40 @@
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 8192 x 4096 x 2048
+Process grid   : 1 x 1  (world=1)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 5
+Threshold      : 1 (override)
+Encoding       : overlap
+GPUs visible   : 1
+
+[Rank 0] 5 timed trials × 1 iters/trial
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 8192 x 4096 x 2048
+Process grid      : 1 x 1
+Frags per rank    : 8
+Total fragments   : 8
+Repeats           : 1
+Threshold used    : 1.0000
+--- Timing (worst rank) ---
+Baseline   min/med/max : 15.4098 / 15.4117 / 15.4190  ms
+Baseline   GFLOPS (med): 8917.8454  (min 8913.6303, max 8918.9381)
+Protected  min/med/max : 16.3736 / 16.3854 / 16.3880  ms
+Protected  GFLOPS (med): 8387.9066  (min 8386.5472, max 8393.9536)
+Overhead (median)      : 6.3179 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 40 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+Collecting data...
+Generating '/tmp/nsys-latorresn/nsys-report-f788.qdstrm'
+Press Ctrl-C to stop symbol files downloading
+[1/1] [0%                          ] big_ns_ours_online.nsys-rep[1/1] [0%                          ] big_ns_ours_online.nsys-rep[1/1] [==18%                       ] big_ns_ours_online.nsys-rep[1/1] [==21%                       ] big_ns_ours_online.nsys-rep[1/1] [====25%                     ] big_ns_ours_online.nsys-rep[1/1] [====26%                     ] big_ns_ours_online.nsys-rep[1/1] [====27%                     ] big_ns_ours_online.nsys-rep[1/1] [====28%                     ] big_ns_ours_online.nsys-rep[1/1] [=====29%                    ] big_ns_ours_online.nsys-rep[1/1] [=====30%                    ] big_ns_ours_online.nsys-rep[1/1] [=====31%                    ] big_ns_ours_online.nsys-rep[1/1] [=====32%                    ] big_ns_ours_online.nsys-rep[1/1] [======33%                   ] big_ns_ours_online.nsys-rep[1/1] [======34%                   ] big_ns_ours_online.nsys-rep[1/1] [======35%                   ] big_ns_ours_online.nsys-rep[1/1] [=======36%                  ] big_ns_ours_online.nsys-rep[1/1] [=======37%                  ] big_ns_ours_online.nsys-rep[1/1] [=======38%                  ] big_ns_ours_online.nsys-rep[1/1] [========40%                 ] big_ns_ours_online.nsys-rep[1/1] [==========48%               ] big_ns_ours_online.nsys-rep[1/1] [============55%             ] big_ns_ours_online.nsys-rep[1/1] [=================72%        ] big_ns_ours_online.nsys-rep[1/1] [=================73%        ] big_ns_ours_online.nsys-rep[1/1] [========================100%] big_ns_ours_online.nsys-rep[1/1] [========================100%] big_ns_ours_online.nsys-rep
+Generated:
+	/home/latorresn/fcrojasv/asynchronous_abft/scripts/profile/big_ns_ours_online.nsys-rep
