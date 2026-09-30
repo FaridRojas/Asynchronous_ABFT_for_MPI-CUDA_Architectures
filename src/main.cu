@@ -110,6 +110,7 @@ int main(int argc, char** argv) {
     std::string mode_label =
         cfg.calibrate     ? "calibrate" :
         cfg.baseline_only ? "baseline"  :
+        cfg.localize_always ? "online_loc" :
                             "online";
 
     if (world_rank == 0) {
@@ -138,7 +139,10 @@ int main(int argc, char** argv) {
         else
             std::cout << "Threshold      : (per-fragment, formula)\n";
         if (!cfg.baseline_only && !cfg.calibrate)
-            std::cout << "Encoding       : " << cfg.encoding_mode << "\n";
+            std::cout << "Encoding       : " << cfg.encoding_mode << "\n"
+                      << "Localization   : "
+                      << (cfg.localize_always ? "every fragment (deployment)"
+                                              : "only with injection") << "\n";
         std::cout << "GPUs visible   : " << num_gpus << "\n\n";
     }
 
@@ -339,7 +343,8 @@ int main(int argc, char** argv) {
                              cfg.repeats,
                              iter_ms_unused, cm_trial,
                              n_restored_trial, total_ms,
-                             cfg.encoding_mode);
+                             cfg.encoding_mode,
+                             cfg.localize_always);
             if (record) {
                 protected_samples.push_back(total_ms / cfg.repeats);
                 cm_local.TP += cm_trial.TP;

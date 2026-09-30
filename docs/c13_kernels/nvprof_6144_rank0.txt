@@ -1,0 +1,14 @@
+==13776== NVPROF is profiling process 13776, command: ./abft_gemm 6144 6144 6144 --calibrate --frags-per-rank 8 --repeats 2 --csv c13/_scratch.csv --calib-diffs c13/_scratch_diffs.csv
+==13776== Warning: Profiling results might be incorrect with current version of nvcc compiler used to compile cuda app. Compile with nvcc compiler 9.0 or later version to get correct profiling results. Ignore this warning if code is already compiled with the recommended nvcc version 
+==13776== Profiling application: ./abft_gemm 6144 6144 6144 --calibrate --frags-per-rank 8 --repeats 2 --csv c13/_scratch.csv --calib-diffs c13/_scratch_diffs.csv
+==13776== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+ GPU activities:   78.04%  360.18ms         6  60.030ms  39.911ms  80.147ms  [CUDA memcpy HtoD]
+                   18.74%  86.497ms        16  5.4061ms  5.1853ms  5.6340ms  sgemm_128x128x8_NN_vec
+                    2.61%  12.065ms        16  754.03us  730.61us  783.25us  k_actual_row(float const *, int, double*, int, int)
+                    0.31%  1.4408ms         2  720.38us  696.62us  744.14us  k_col_checksum_A_part(float const *, int, double*, int, int)
+                    0.25%  1.1432ms        16  71.447us  68.769us  74.946us  k_expected_row_part(double const *, float const *, int, double*, int, int)
+                    0.02%  103.91us        18  5.7720us  5.1200us  10.048us  k_reduce_enc_part(double const *, double*, int, int)
+                    0.01%  55.074us        32  1.7210us  1.5360us  2.6880us  [CUDA memcpy DtoH]
+                    0.00%  21.856us         3  7.2850us  5.8560us  9.8880us  sgemm_32x32x32_NN_vec
+                    0.00%  11.008us         3  3.6690us  3.3610us  4.2240us  [CUDA memset]

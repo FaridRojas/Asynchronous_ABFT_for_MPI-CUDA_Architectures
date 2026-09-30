@@ -1,0 +1,284 @@
+2026-09-29T22:27:02-05:00
+index, name, driver_version
+0, NVIDIA GeForce GTX TITAN X, 580.178.04
+1, NVIDIA GeForce GTX TITAN X, 580.178.04
+=== calibration 2048^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 2048 x 2048 x 2048
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_2048.csv  (40960 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 2048 x 2048 x 2048
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0008
+Safety factor          : 3.0000
+Suggested threshold    : 0.0023
+
+=> Re-run with:  --threshold 0.0023
+==================================================
+
+=== calibration 2304^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 2304 x 2304 x 2304
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_2304.csv  (46080 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 2304 x 2304 x 2304
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0010
+Safety factor          : 3.0000
+Suggested threshold    : 0.0029
+
+=> Re-run with:  --threshold 0.0029
+==================================================
+
+=== calibration 2560^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 2560 x 2560 x 2560
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_2560.csv  (51200 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 2560 x 2560 x 2560
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0013
+Safety factor          : 3.0000
+Suggested threshold    : 0.0039
+
+=> Re-run with:  --threshold 0.0039
+==================================================
+
+=== calibration 2816^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 2816 x 2816 x 2816
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_2816.csv  (56320 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 2816 x 2816 x 2816
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0036
+Safety factor          : 3.0000
+Suggested threshold    : 0.0109
+
+=> Re-run with:  --threshold 0.0109
+==================================================
+
+=== calibration 3072^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 3072 x 3072 x 3072
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_3072.csv  (61440 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 3072 x 3072 x 3072
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0049
+Safety factor          : 3.0000
+Suggested threshold    : 0.0146
+
+=> Re-run with:  --threshold 0.0146
+==================================================
+
+=== calibration 3328^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 3328 x 3328 x 3328
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_3328.csv  (66560 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 3328 x 3328 x 3328
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0055
+Safety factor          : 3.0000
+Suggested threshold    : 0.0165
+
+=> Re-run with:  --threshold 0.0165
+==================================================
+
+=== calibration 3584^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 3584 x 3584 x 3584
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_3584.csv  (71680 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 3584 x 3584 x 3584
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0055
+Safety factor          : 3.0000
+Suggested threshold    : 0.0165
+
+=> Re-run with:  --threshold 0.0165
+==================================================
+
+=== calibration 3840^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 3840 x 3840 x 3840
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_3840.csv  (76800 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 3840 x 3840 x 3840
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0070
+Safety factor          : 3.0000
+Suggested threshold    : 0.0210
+
+=> Re-run with:  --threshold 0.0210
+==================================================
+
+=== calibration 4096^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : calibrate  (inject=none)
+M x K x N      : 4096 x 4096 x 4096
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 20
+Samples        : 5
+Threshold      : (per-fragment, formula)
+GPUs visible   : 2
+
+Calibration diffs written : c13_fino/abft_calib_diffs_4096.csv  (81920 samples)
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : CALIBRATION
+M x K x N         : 4096 x 4096 x 4096
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 20
+--- Timing (worst rank) ---
+Baseline   min/med/max : 0.0000 / 0.0000 / 0.0000  ms
+Baseline   GFLOPS (med): 0.0000  (min 0.0000, max 0.0000)
+--- Calibration ---
+Max |actual-expected|  : 0.0072
+Safety factor          : 3.0000
+Suggested threshold    : 0.0216
+
+=> Re-run with:  --threshold 0.0216
+==================================================
+
+=== All runs complete ===

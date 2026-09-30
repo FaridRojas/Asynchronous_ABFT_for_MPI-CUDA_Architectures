@@ -83,6 +83,12 @@ struct ExperimentConfig {
     bool        baseline_only  = false;
     bool        calibrate      = false;     // run calibration pass instead of normal pass
 
+    // Launch the localisation and correction kernels on every fragment of
+    // every operation, as a deployment with online recovery must, instead
+    // of only when a fault is injected.  With no fault each of them returns
+    // on its first instruction, so this measures what that choice costs.
+    bool        localize_always = false;
+
     // User-supplied detection threshold.  If > 0, overrides the formula and
     // is used uniformly for every fragment.  Set this to the value printed
     // by a previous `--calibrate` run.

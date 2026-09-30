@@ -18,6 +18,8 @@ inline void print_help() {
 "                                 restrict the flipped bit to a region of the\n"
 "                                 IEEE-754 word (default any)\n"
 "  --baseline                     run only the unprotected GEMM\n"
+"  --localize-always              launch localisation+correction on every\n"
+"                                 fragment even without injection (deployment)\n"
 "  --calibrate                    run calibration: report max |actual-expected|\n"
 "                                 and a suggested threshold; no detection logic\n"
 "  --threshold T                  override detection threshold with T (>0).\n"
@@ -65,6 +67,7 @@ inline ExperimentConfig parse_args(int argc, char** argv) {
         else if (a == "--swifi-zone"         && i + 1 < argc) c.swifi_zone    = argv[++i];
         else if (a == "--frag-cap"           && i + 1 < argc) c.frag_cap      = std::atoi(argv[++i]);
         else if (a == "--baseline")                           c.baseline_only = true;
+        else if (a == "--localize-always")                    c.localize_always = true;
         else if (a == "--calibrate")                          c.calibrate     = true;
         else if (a == "--threshold"          && i + 1 < argc) c.threshold_override = std::atof(argv[++i]);
         else if (a == "--calibration-safety" && i + 1 < argc) c.calibration_safety_factor = std::atof(argv[++i]);

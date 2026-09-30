@@ -126,7 +126,8 @@ inline void pass_online_loop(PipelineBuffers& b,
                              ConfusionMatrix& cm,
                              int& n_restored,
                              double& out_total_ms,
-                             const std::string& encoding_mode = "amortized") {
+                             const std::string& encoding_mode = "amortized",
+                             bool localize_always = false) {
     float* dC_bufs[2] = { dC_buf0, dC_buf1 };
     // The second buffer is only indexed when repeats > 1 (iteration parity),
     // so main.cu skips allocating it for repeats == 1.  Fail loudly rather
@@ -141,7 +142,10 @@ inline void pass_online_loop(PipelineBuffers& b,
     // that always trips the threshold (overhead studies).  Both exercise
     // the full detect+localize+correct path.
     const bool inject_on  = (inject_mode == "swifi" || inject_mode == "add");
-    const bool do_localize = inject_on;
+    // A deployment cannot know in advance which fragment will be hit, so
+    // it must launch localisation everywhere (--localize-always); the
+    // measurement campaigns launch it only when a fault is injected.
+    const bool do_localize = inject_on || localize_always;
 
     // --- Optional device golden (only for the restore-success metric) ---
     // Allocated once, but re-uploaded on EVERY call: under

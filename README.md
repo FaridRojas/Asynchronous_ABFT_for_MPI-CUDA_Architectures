@@ -68,6 +68,8 @@ only needed for interactive use. `abft_gemm --help` lists all options.
 | Noise characterisation and threshold | `calibration/` | `run_calibrate_felix.sbatch`, `analyze_calibration.py` |
 | Detection and correction by IEEE-754 region | `abft_metrics.csv` (`swifi` rows), `campaign/` | `run_abft_felix.sbatch`, `plot_metrics.py` |
 | Sensitivity to the threshold factor | `tau_sweep/abft_tau_sweep.csv` | `run_tau_sweep_felix.sbatch` |
+| Cost of launching localisation on every operation (deployment) | `c1_localize/c1_metrics.csv` | `run_c1_c13_felix.sbatch` |
+| cuBLAS kernel per size and noise-floor jump | `c13_kernels/` | `run_c1_c13_felix.sbatch`, `run_c13_ruido_fino_felix.sbatch` |
 | Methodology figures | none | `plot_metodologia_figs.py` |
 | Thesis figures with Spanish labels | all of the above | `figuras_libro.py` |
 
@@ -96,6 +98,15 @@ adds the quantile–quantile plots of the extreme-value fit.
   does not require running the calibration again.
 - The threshold analysis and every figure can be regenerated from the data in
   `docs/` without GPU access.
+- `docs/c1_localize/` and `docs/c13_kernels/` were measured on 2026-09-29,
+  after the campaigns, on the same node and modules but with NVIDIA driver
+  580.178.04. `c1_metrics.csv` compares launching localisation only on
+  injection (`scheme` = `online`) with launching it on every operation
+  (`--localize-always`, `scheme` = `online_loc`), each run twice in A-B-B-A
+  order with its own interleaved baseline. The calibration repeated in the
+  same job (`abft_calibration_reproduccion.csv`) reproduces the published
+  residuals bit for bit; `nvprof_*.txt` name the cuBLAS kernel of each size
+  and `calibracion_fina/` calibrates every 256 between 2048 and 4096.
 - The threshold-factor sweep is in `docs/tau_sweep/`. The job stopped before
   finishing 8192³, so only 1024³, 2048³ and 4096³ are complete; those are the
   sizes reported in the thesis.
