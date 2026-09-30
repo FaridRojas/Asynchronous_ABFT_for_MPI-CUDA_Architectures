@@ -1,0 +1,392 @@
+==23944== NVPROF is profiling process 23944, command: ./abft_gemm 10240 10240 10240 --inject none --threshold 1.0 --encoding-mode overlap --frags-per-rank 8 --samples 5 --repeats 1 --warmups 2 --csv c2/c2_metrics.csv
+==23944== Warning: Profiling results might be incorrect with current version of nvcc compiler used to compile cuda app. Compile with nvcc compiler 9.0 or later version to get correct profiling results. Ignore this warning if code is already compiled with the recommended nvcc version 
+==23944== Profiling application: ./abft_gemm 10240 10240 10240 --inject none --threshold 1.0 --encoding-mode overlap --frags-per-rank 8 --samples 5 --repeats 1 --warmups 2 --csv c2/c2_metrics.csv
+==23944== Profiling result:
+"Start","Duration","Grid X","Grid Y","Grid Z","Block X","Block Y","Block Z","Registers Per Thread","Static SMem","Dynamic SMem","Size","Throughput","SrcMemType","DstMemType","Device","Context","Stream","Name","Correlation_ID"
+us,us,,,,,,,,KB,B,MB,GB/s,,,,,,,
+5550454.433000,220874.006000,,,,,,,,,,400.000000,1.768542,"Pageable","Device","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy HtoD]",1486
+5771885.858000,109990.898000,,,,,,,,,,200.000000,1.775715,"Pageable","Device","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy HtoD]",1487
+6042412.682000,4.000000,,,,,,,,,,0.015625,3.814697,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","14","[CUDA memset]",1491
+6042422.378000,3.232000,,,,,,,,,,0.015625,4.721160,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","14","[CUDA memset]",1492
+6042428.298000,3.232000,,,,,,,,,,0.015625,4.721160,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","14","[CUDA memset]",1493
+6044497.106000,8.416000,4,1,1,128,1,1,153,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_32x32x32_NN_vec",1494
+6044525.394000,5.248000,4,1,1,128,1,1,153,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_32x32x32_NN_vec",1496
+6044540.627000,5.024000,4,1,1,128,1,1,153,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_32x32x32_NN_vec",1498
+6057885.297000,24510.196000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1505
+6082396.901000,24641.302000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1507
+6107039.579000,24581.589000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1509
+6131622.448000,24603.349000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1511
+6156227.045000,24827.674000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1513
+6181056.063000,24678.358000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1515
+6205735.830000,25057.181000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1517
+6230794.452000,24889.178000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1519
+6258203.486000,1985.606000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",1525
+6259921.887000,25391.045000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1545
+6282519.502000,63.905000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1526
+6282588.592000,494.857000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1527
+6283088.889000,6.688000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1528
+6283101.689000,293.574000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1529
+6283405.951000,6.208000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1530
+6283418.207000,274.406000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1531
+6283704.389000,6.560000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1532
+6283717.829000,222.660000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1533
+6283946.057000,6.465000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1534
+6283959.850000,220.004000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1535
+6284190.798000,6.560000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1536
+6284203.726000,238.501000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1537
+6284445.011000,6.112000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1538
+6284456.723000,237.445000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1539
+6284702.968000,5.760000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1540
+6284711.992000,238.661000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1541
+6284955.997000,5.824000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1542
+6284968.061000,5.152000,,,,,,,,,,0.000015,0.002892,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1543
+6284980.221000,4.320000,,,,,,,,,,0.000004,0.000862,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1544
+6285315.556000,1836.611000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1570
+6285324.676000,25281.634000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1548
+6307927.859000,15.968000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1571
+6310611.366000,25874.925000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1551
+6333698.911000,2990.744000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1573
+6336490.035000,26796.864000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1554
+6360547.007000,13.952000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1574
+6360565.695000,2375.245000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1576
+6362943.500000,7.168000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1577
+6363289.939000,1932.453000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1579
+6363296.371000,26655.965000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1557
+6387214.011000,13.056000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1580
+6389955.056000,26492.889000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1560
+6413608.499000,3045.338000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1582
+6416452.809000,27570.638000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1563
+6441207.905000,12.513000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1583
+6441223.426000,1918.596000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1585
+6443145.638000,7.488000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1586
+6444026.583000,1991.238000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1588
+6444029.783000,27358.378000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1566
+6468495.562000,11.968000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1589
+6471391.105000,1298.329000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1591
+6472690.842000,7.040000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1592
+6472862.269000,1.728000,,,,,,,,,,0.000015,0.008623,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1596
+6472892.766000,1.568000,,,,,,,,,,0.000004,0.002376,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1597
+6474545.469000,26889.409000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1601
+6501436.350000,27217.927000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1603
+6528655.718000,27308.872000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1605
+6555966.030000,27082.789000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1607
+6583050.195000,27349.802000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1609
+6610401.405000,27152.806000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1611
+6637555.683000,27183.142000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1613
+6664740.297000,26807.488000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1615
+6693552.367000,2122.344000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",1621
+6695389.682000,27100.357000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1641
+6719588.767000,81.602000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1622
+6719675.873000,466.409000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1623
+6720146.506000,6.784000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1624
+6720159.403000,439.368000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1625
+6720604.243000,6.752000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1626
+6720617.171000,256.389000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1627
+6720879.992000,6.144000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1628
+6720889.720000,253.733000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1629
+6721147.837000,6.112000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1630
+6721159.261000,253.701000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1631
+6721418.210000,6.113000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1632
+6721430.563000,253.508000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1633
+6721693.928000,6.400000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1634
+6721705.512000,253.605000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1635
+6721962.093000,5.952000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1636
+6721974.381000,255.045000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1637
+6722233.298000,5.792000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1638
+6722247.058000,3.424000,,,,,,,,,,0.000015,0.004352,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1639
+6722256.754000,3.616000,,,,,,,,,,0.000004,0.001030,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1640
+6722495.287000,1955.269000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1666
+6722504.599000,27473.260000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1644
+6746864.808000,14.208000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1667
+6749980.483000,26937.250000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1647
+6774176.753000,3157.052000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1669
+6776926.277000,27122.502000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1650
+6801169.812000,14.048000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1670
+6801193.044000,2435.823000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1672
+6803633.539000,7.232000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1673
+6804051.595000,29144.364000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1653
+6829376.174000,3693.638000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1675
+6833073.332000,6.976000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1676
+6833198.743000,1952.773000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1678
+6833205.175000,27581.998000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1656
+6857754.859000,12.928000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1679
+6860791.749000,1955.205000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1681
+6860795.109000,27414.635000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1659
+6885333.209000,9.088000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1682
+6888212.336000,27929.109000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1662
+6912447.103000,3684.357000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1684
+6916132.933000,6.976000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1685
+6916142.725000,1301.593000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1687
+6917445.790000,6.912000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1688
+6917477.758000,1.440000,,,,,,,,,,0.000015,0.010348,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1692
+6917499.359000,1.568000,,,,,,,,,,0.000004,0.002376,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1693
+6918636.980000,26850.209000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1697
+6945488.693000,27106.245000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1699
+6972596.314000,27296.232000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1701
+6999893.954000,26732.542000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1703
+7026627.937000,26915.969000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1705
+7053545.410000,26729.918000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1707
+7080276.736000,26672.925000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1709
+7106951.101000,27328.297000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1711
+7136228.107000,2118.537000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",1717
+7138065.006000,27257.416000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1737
+7162475.616000,70.177000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1718
+7162551.137000,358.023000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1719
+7162913.672000,6.784000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1720
+7162927.304000,344.967000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1721
+7163277.103000,6.592000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1722
+7163290.287000,315.462000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1723
+7163611.477000,6.561000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1724
+7163624.822000,273.797000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1725
+7163902.587000,6.112000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1726
+7163916.475000,235.397000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1727
+7164157.184000,6.304000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1728
+7164169.344000,235.973000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1729
+7164410.949000,6.528000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1730
+7164424.133000,238.405000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1731
+7164668.682000,6.016000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1732
+7164682.186000,235.300000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1733
+7164922.158000,5.921000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1734
+7164928.654000,2.305000,,,,,,,,,,0.000015,0.006465,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1735
+7164936.719000,3.904000,,,,,,,,,,0.000004,0.000954,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1736
+7165324.982000,27031.972000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1740
+7189563.877000,3118.875000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1762
+7192363.098000,26879.681000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1743
+7216489.126000,13.760000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1763
+7216512.359000,1916.228000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1765
+7218433.675000,7.328000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1766
+7219246.075000,27127.653000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1746
+7243480.393000,3139.836000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1768
+7246376.576000,27001.411000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1749
+7270654.736000,15.520000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1769
+7270674.864000,2457.839000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1771
+7273135.327000,7.136000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1772
+7273380.772000,27171.814000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1752
+7297757.652000,3115.932000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1774
+7300556.362000,28079.736000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1755
+7324882.010000,13.120000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1775
+7324901.082000,3647.782000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1777
+7328552.352000,7.008000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1778
+7328638.625000,1976.294000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1780
+7328642.145000,27300.489000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1758
+7353283.608000,13.312000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1781
+7355945.930000,1286.873000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1783
+7357234.211000,6.976000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1784
+7357265.636000,1.439000,,,,,,,,,,0.000015,0.010355,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1788
+7357287.460000,1.536000,,,,,,,,,,0.000004,0.002425,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1789
+7357336.741000,27034.819000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1793
+7384373.033000,27010.051000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1795
+7411384.460000,27112.485000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1797
+7438498.257000,27155.206000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1799
+7465654.935000,27233.896000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1801
+7492890.175000,27008.067000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1803
+7519899.714000,27317.289000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1805
+7547218.443000,27142.630000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1807
+7575340.739000,2117.545000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",1813
+7577178.630000,27692.721000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1833
+7601737.531000,55.169000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1814
+7601798.204000,495.242000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1815
+7602304.934000,6.400000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1816
+7602317.542000,295.238000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1817
+7602618.476000,6.528000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1818
+7602632.300000,255.589000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1819
+7602894.481000,6.048000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1820
+7602906.673000,235.333000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1821
+7603148.374000,6.176000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1822
+7603160.790000,253.477000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1823
+7603419.227000,6.368000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1824
+7603432.091000,249.637000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1825
+7603691.104000,6.016000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1826
+7603703.361000,251.588000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1827
+7603965.734000,5.984000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1828
+7603977.830000,251.141000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1829
+7604231.787000,5.984000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1830
+7604239.179000,4.160000,,,,,,,,,,0.000015,0.003582,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1831
+7604248.619000,3.904000,,,,,,,,,,0.000004,0.000954,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1832
+7604873.975000,27680.592000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1836
+7628803.007000,3648.230000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1858
+7632455.269000,7.072000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1859
+7632557.127000,27858.227000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1839
+7656626.706000,3710.727000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1861
+7660341.273000,7.136000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1862
+7660417.851000,1978.117000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1864
+7660425.627000,27220.871000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1842
+7684843.724000,14.017000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1865
+7687651.170000,26979.202000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1845
+7711873.872000,3220.509000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1867
+7714634.149000,27119.461000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1848
+7738825.618000,12.320000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1868
+7738844.275000,2461.870000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1870
+7741310.465000,7.201000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1871
+7741756.330000,26903.425000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1851
+7765840.246000,3122.907000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1873
+7768663.243000,27208.743000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1854
+7792920.762000,12.032000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1874
+7792934.170000,1923.621000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1876
+7794859.167000,7.232000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1877
+7795874.898000,1282.809000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1879
+7797158.987000,6.944000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1880
+7797190.699000,1.441000,,,,,,,,,,0.000015,0.010341,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1884
+7797212.364000,1.536000,,,,,,,,,,0.000004,0.002425,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1885
+7797396.591000,26916.290000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1889
+7824314.257000,27002.339000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1891
+7851318.004000,27014.339000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1893
+7878333.783000,26725.598000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1895
+7905060.853000,27175.271000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1897
+7932237.596000,26915.777000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1899
+7959154.813000,26970.147000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1901
+7986126.495000,26828.960000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1903
+8014382.107000,2114.024000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",1909
+8016220.478000,27332.169000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1929
+8040535.821000,51.617000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1910
+8040592.431000,574.315000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1911
+8041173.402000,6.720000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1912
+8041186.586000,314.726000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1913
+8041507.104000,6.400000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1914
+8041520.064000,295.974000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1915
+8041826.534000,6.240000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1916
+8041839.718000,271.461000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1917
+8042116.972000,6.336000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1918
+8042129.708000,250.981000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1919
+8042393.585000,6.432000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1920
+8042407.857000,250.245000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1921
+8042666.838000,5.984000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1922
+8042678.870000,251.173000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1923
+8042939.611000,6.016000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1924
+8042951.740000,250.404000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",1925
+8043207.840000,5.920000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",1926
+8043214.849000,2.303000,,,,,,,,,,0.000015,0.006470,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1927
+8043220.737000,3.263000,,,,,,,,,,0.000004,0.001142,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",1928
+8043555.591000,26982.403000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1932
+8067748.500000,3175.357000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1954
+8070544.906000,27896.116000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1935
+8094677.174000,11.936000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1955
+8094698.679000,3649.317000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1957
+8098351.804000,6.977000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1958
+8098443.550000,1960.229000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1960
+8098450.270000,27438.027000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1938
+8123006.578000,12.993000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1961
+8125891.113000,27887.925000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1941
+8149963.029000,3712.007000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1963
+8153678.076000,7.136000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1964
+8153781.982000,26920.929000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1944
+8177892.073000,3204.637000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1966
+8180706.399000,26999.363000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1947
+8204815.787000,10.304000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1967
+8204832.556000,3090.522000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1969
+8207709.314000,27152.294000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1950
+8231882.479000,14.369000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1970
+8231898.960000,1973.349000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1972
+8233873.717000,7.264000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1973
+8234864.712000,1292.153000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",1975
+8236158.241000,6.944000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",1976
+8236189.441000,1.441000,,,,,,,,,,0.000015,0.010341,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1980
+8236211.042000,1.536000,,,,,,,,,,0.000004,0.002425,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",1981
+8237042.162000,26981.859000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1985
+8264025.332000,26993.732000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1987
+8291020.375000,26908.226000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1989
+8317929.977000,27064.484000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1991
+8344995.933000,27022.211000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1993
+8372019.585000,27009.379000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1995
+8399030.436000,26836.992000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1997
+8425868.836000,27044.388000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",1999
+8454732.427000,2121.768000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",2005
+8456570.189000,27124.870000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2025
+8480682.553000,51.682000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2006
+8480740.218000,430.697000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2007
+8481176.643000,6.880000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2008
+8481190.947000,328.646000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2009
+8481523.881000,6.529000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2010
+8481537.866000,308.358000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2011
+8481852.336000,6.400000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2012
+8481863.920000,237.828000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2013
+8482108.117000,6.144000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2014
+8482122.005000,273.477000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2015
+8482405.274000,6.400000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2016
+8482418.587000,238.948000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2017
+8482663.135000,6.656000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2018
+8482676.096000,237.124000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2019
+8482924.612000,6.401000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2020
+8482937.412000,236.261000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2021
+8483183.657000,5.920000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2022
+8483190.985000,4.288000,,,,,,,,,,0.000015,0.003475,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",2023
+8483200.202000,3.199000,,,,,,,,,,0.000004,0.001165,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",2024
+8483698.099000,27818.803000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2028
+8507784.702000,3709.895000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2050
+8511498.117000,7.008000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2051
+8511519.718000,28069.975000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2031
+8535687.731000,3722.438000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2053
+8539413.466000,6.976000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2054
+8539594.525000,1961.030000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2056
+8539602.333000,27135.878000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2034
+8563861.996000,11.104000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2057
+8566741.219000,1947.429000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2059
+8566746.531000,27206.663000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2037
+8591068.211000,12.544000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2060
+8593955.434000,28103.384000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2040
+8618169.816000,3715.143000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2062
+8621888.511000,7.072000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2063
+8622064.002000,26955.683000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2043
+8646279.152000,3169.053000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2065
+8649023.429000,27165.510000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2046
+8673155.889000,13.952000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2066
+8673172.017000,3183.357000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2068
+8676356.814000,6.880000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2069
+8676364.942000,1291.097000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2071
+8677657.415000,6.912000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2072
+8677702.856000,1.408000,,,,,,,,,,0.000015,0.010583,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",2076
+8677727.048000,1.536000,,,,,,,,,,0.000004,0.002425,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",2077
+8678114.416000,26918.593000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2081
+8705034.385000,26993.059000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2083
+8732028.916000,26801.023000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2085
+8758831.379000,27120.486000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2087
+8785953.273000,26886.145000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2089
+8812840.986000,27002.595000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2091
+8839844.957000,27075.716000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2093
+8866922.049000,27161.158000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2095
+8896294.162000,2119.880000,40,32,1,256,1,1,26,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_col_checksum_A_part(float const *, int, double*, int, int)",2101
+8898133.525000,27334.185000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2121
+8922450.757000,58.529000,40,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2102
+8922513.478000,547.370000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2103
+8923064.592000,6.496000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2104
+8923077.360000,313.447000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2105
+8923396.022000,6.369000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2106
+8923410.135000,240.164000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2107
+8923657.180000,6.336000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2108
+8923670.555000,235.685000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2109
+8923910.112000,6.145000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2110
+8923921.568000,237.893000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2111
+8924164.933000,6.112000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2112
+8924178.821000,237.797000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2113
+8924419.786000,6.496000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2114
+8924432.586000,235.461000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2115
+8924676.975000,6.016000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2116
+8924690.479000,237.797000,3,32,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_expected_row_part(double const *, float const *, int, double*, int, int)",2117
+8924933.780000,5.856000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_reduce_enc_part(double const *, double*, int, int)",2118
+8924944.692000,4.384000,,,,,,,,,,0.000015,0.003399,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",2119
+8924953.012000,2.432000,,,,,,,,,,0.000004,0.001532,"Device",,"NVIDIA GeForce GTX TITAN X (1)","1","15","[CUDA memset]",2120
+8925474.270000,27051.492000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2124
+8949541.417000,3071.387000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2146
+8952529.410000,27413.259000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2127
+8976679.279000,15.680000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2147
+8976705.071000,1891.780000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2149
+8978601.780000,7.360000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2150
+8979947.053000,1975.622000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2152
+8979953.165000,27253.128000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2130
+9004275.325000,14.400000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2153
+9007209.301000,26896.161000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2133
+9031236.288000,3087.866000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2155
+9034111.638000,26819.072000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2136
+9058235.235000,14.144000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2156
+9058253.379000,1427.515000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2158
+9059683.710000,7.392000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2159
+9060933.654000,1986.598000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2161
+9060938.070000,27168.902000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2139
+9085370.664000,14.849000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2162
+9088109.565000,26910.657000,2,5,40,256,1,1,128,16.515625,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","14","sgemm_128x128x8_NN_vec",2142
+9112184.456000,3087.195000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2164
+9115273.059000,6.944000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2165
+9115281.187000,1280.408000,3,1,1,256,1,1,32,0.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_actual_row(float const *, int, double*, int, int)",2167
+9116563.067000,6.913000,1,1,1,256,1,1,17,3.000000,0,,,,,"NVIDIA GeForce GTX TITAN X (1)","1","15","k_detect_row(double const *, double const *, int, double, int*, double*, int, int*)",2168
+9116594.780000,1.536000,,,,,,,,,,0.000015,0.009701,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",2172
+9116620.732000,1.568000,,,,,,,,,,0.000004,0.002376,"Device","Pageable","NVIDIA GeForce GTX TITAN X (1)","1","7","[CUDA memcpy DtoH]",2173

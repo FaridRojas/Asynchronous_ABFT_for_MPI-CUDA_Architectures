@@ -1,0 +1,113 @@
+2026-09-29T22:56:49-05:00
+index, name, driver_version
+0, NVIDIA GeForce GTX TITAN X, 580.178.04
+1, NVIDIA GeForce GTX TITAN X, 580.178.04
+=== C2 trace 5120^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 5120 x 5120 x 5120
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 5
+Threshold      : 1 (override)
+Encoding       : overlap
+Localization   : only with injection
+GPUs visible   : 2
+
+[Rank 0] 5 timed trials × 1 iters/trial
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 5120 x 5120 x 5120
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 1.0000
+--- Timing (worst rank) ---
+Baseline   min/med/max : 32.4347 / 32.8305 / 34.7537  ms
+Baseline   GFLOPS (med): 8176.4162  (min 7723.9498, max 8276.1728)
+Protected  min/med/max : 33.4644 / 34.2219 / 36.5009  ms
+Protected  GFLOPS (med): 7843.9572  (min 7354.2117, max 8021.5175)
+Overhead (median)      : 4.2384 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 80 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+=== C2 trace 8192^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 8192 x 8192 x 8192
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 5
+Threshold      : 1 (override)
+Encoding       : overlap
+Localization   : only with injection
+GPUs visible   : 2
+
+[Rank 0] 5 timed trials × 1 iters/trial
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 8192 x 8192 x 8192
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 1.0000
+--- Timing (worst rank) ---
+Baseline   min/med/max : 112.0032 / 113.8165 / 115.1458  ms
+Baseline   GFLOPS (med): 9660.3919  (min 9548.8678, max 9816.7886)
+Protected  min/med/max : 114.6880 / 117.1633 / 119.4293  ms
+Protected  GFLOPS (med): 9384.4378  (min 9206.3795, max 9586.9791)
+Overhead (median)      : 2.9406 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 80 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+=== C2 trace 10240^3
+=== ABFT GEMM (cuBLAS, online pipelined) ===
+Mode           : online  (inject=none)
+M x K x N      : 10240 x 10240 x 10240
+Process grid   : 1 x 2  (world=2)
+Frags per rank : 8
+Repeats        : 1
+Samples        : 5
+Threshold      : 1 (override)
+Encoding       : overlap
+Localization   : only with injection
+GPUs visible   : 2
+
+[Rank 0] 5 timed trials × 1 iters/trial
+
+========== EXPERIMENT METRICS (global) ==========
+Mode              : online / inject=none
+M x K x N         : 10240 x 10240 x 10240
+Process grid      : 1 x 2
+Frags per rank    : 8
+Total fragments   : 16
+Repeats           : 1
+Threshold used    : 1.0000
+--- Timing (worst rank) ---
+Baseline   min/med/max : 216.9143 / 217.6529 / 218.1471  ms
+Baseline   GFLOPS (med): 9866.5519  (min 9844.2003, max 9900.1502)
+Protected  min/med/max : 220.9667 / 222.5696 / 223.3030  ms
+Protected  GFLOPS (med): 9648.5924  (min 9616.9046, max 9718.5829)
+Overhead (median)      : 2.2590 %
+--- Confusion Matrix (global) ---
+TP / TN / FP / FN     : 0 / 80 / 0 / 0
+Recall                : 0.0000
+Detection precision   : 0.0000
+Correction precision  : 0.0000 %
+==================================================
+
+=== All runs complete ===

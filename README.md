@@ -68,8 +68,9 @@ only needed for interactive use. `abft_gemm --help` lists all options.
 | Noise characterisation and threshold | `calibration/` | `run_calibrate_felix.sbatch`, `analyze_calibration.py` |
 | Detection and correction by IEEE-754 region | `abft_metrics.csv` (`swifi` rows), `campaign/` | `run_abft_felix.sbatch`, `plot_metrics.py` |
 | Sensitivity to the threshold factor | `tau_sweep/abft_tau_sweep.csv` | `run_tau_sweep_felix.sbatch` |
-| Cost of launching localisation on every operation (deployment) | `c1_localize/c1_metrics.csv` | `run_c1_c13_felix.sbatch` |
-| cuBLAS kernel per size and noise-floor jump | `c13_kernels/` | `run_c1_c13_felix.sbatch`, `run_c13_ruido_fino_felix.sbatch` |
+| Cost of launching localisation on every operation (deployment) | `c1_localize/c1_metrics.csv` | `run_c1_c13_felix.sbatch`, `analisis_c1_c13.py` |
+| Composition of the exposed cost in the large regime (nvprof traces) | `c2_traza/` | `run_c2_traza_felix.sbatch`, `analisis_c2.py` |
+| cuBLAS kernel per size and noise-floor jump | `c13_kernels/` | `run_c1_c13_felix.sbatch`, `run_c13_ruido_fino_felix.sbatch`, `analisis_c1_c13.py` |
 | Methodology figures | none | `plot_metodologia_figs.py` |
 | Thesis figures with Spanish labels | all of the above | `figuras_libro.py` |
 
@@ -98,15 +99,20 @@ adds the quantile–quantile plots of the extreme-value fit.
   does not require running the calibration again.
 - The threshold analysis and every figure can be regenerated from the data in
   `docs/` without GPU access.
-- `docs/c1_localize/` and `docs/c13_kernels/` were measured on 2026-09-29,
+- `docs/c1_localize/`, `docs/c2_traza/` and `docs/c13_kernels/` were measured on 2026-09-29,
   after the campaigns, on the same node and modules but with NVIDIA driver
   580.178.04. `c1_metrics.csv` compares launching localisation only on
   injection (`scheme` = `online`) with launching it on every operation
   (`--localize-always`, `scheme` = `online_loc`), each run twice in A-B-B-A
   order with its own interleaved baseline. The calibration repeated in the
-  same job (`abft_calibration_reproduccion.csv`) reproduces the published
-  residuals bit for bit; `nvprof_*.txt` name the cuBLAS kernel of each size
+  same job reproduces the published residuals byte for byte (see the SHA-256
+  list in `reproduccion_sha256.txt`); `nvprof_*.txt` name the cuBLAS kernel of each size
   and `calibracion_fina/` calibrates every 256 between 2048 and 4096.
+  `c2_traza/` holds one nvprof GPU trace per process for 5120, 8192 and 10240:
+  each trial runs the unprotected pass and then the protected one on the same
+  operands, so the trace compares the same multiplications with and without
+  the verification stream next to them. `analisis_c1_c13.py` and
+  `analisis_c2.py` print every figure the thesis quotes from these folders.
 - The threshold-factor sweep is in `docs/tau_sweep/`. The job stopped before
   finishing 8192³, so only 1024³, 2048³ and 4096³ are complete; those are the
   sizes reported in the thesis.
