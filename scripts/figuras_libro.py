@@ -90,7 +90,7 @@ EXACTO = {
     "size": "tamaño",
     "Recall": "Sensibilidad",
     "Detection precision": "Precisión de detección",
-    "Correction precision": "Precisión de corrección",
+    "Correction precision": "Tasa de restauración",
     "Rate (1.0 = 100%)": "Proporción (1.0 = 100 %)",
     "Fragments observed": "Fragmentos verificados",
     "TP": "verdadero positivo (TP)",

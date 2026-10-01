@@ -70,6 +70,7 @@ only needed for interactive use. `abft_gemm --help` lists all options.
 | Sensitivity to the threshold factor | `tau_sweep/abft_tau_sweep.csv` | `run_tau_sweep_felix.sbatch` |
 | Cost of launching localisation on every operation (deployment) | `c1_localize/c1_metrics.csv` | `run_c1_c13_felix.sbatch`, `analisis_c1_c13.py` |
 | Composition of the exposed cost in the large regime (nvprof traces) | `c2_traza/` | `run_c2_traza_felix.sbatch`, `analisis_c2.py` |
+| GPU clock and the drift between standalone and paired baselines | `reloj/` | `run_reloj_felix.sbatch`, `analisis_reloj.py` |
 | cuBLAS kernel per size and noise-floor jump | `c13_kernels/` | `run_c1_c13_felix.sbatch`, `run_c13_ruido_fino_felix.sbatch`, `analisis_c1_c13.py` |
 | Methodology figures | none | `plot_metodologia_figs.py` |
 | Thesis figures with Spanish labels | all of the above | `figuras_libro.py` |
@@ -113,6 +114,11 @@ adds the quantile–quantile plots of the extreme-value fit.
   operands, so the trace compares the same multiplications with and without
   the verification stream next to them. `analisis_c1_c13.py` and
   `analisis_c2.py` print every figure the thesis quotes from these folders.
+  `reloj/` (2026-10-01) repeats the campaign protocol for 5120 and 10240
+  square and 10240 x 1024 x 10240 while nvidia-smi logs the SM clock, power
+  and clock-limiting reasons every 100 ms; `analisis_reloj.py` relates the
+  clock of each phase to the drift between the standalone baseline run and
+  the baseline measured inside the protected run.
 - The threshold-factor sweep is in `docs/tau_sweep/`. The job stopped before
   finishing 8192³, so only 1024³, 2048³ and 4096³ are complete; those are the
   sizes reported in the thesis.

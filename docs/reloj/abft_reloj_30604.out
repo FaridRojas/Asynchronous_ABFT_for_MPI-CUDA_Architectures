@@ -1,0 +1,5 @@
+index, name, driver_version, power.limit [W], clocks.max.sm [MHz]
+0, NVIDIA GeForce GTX TITAN X, 580.178.04, 250.00 W, 1392 MHz
+1, NVIDIA GeForce GTX TITAN X, 580.178.04, 250.00 W, 1392 MHz
+campos: timestamp,index,clocks.sm,clocks.mem,power.draw,temperature.gpu,clocks_event_reasons.active
+=== All runs complete ===
